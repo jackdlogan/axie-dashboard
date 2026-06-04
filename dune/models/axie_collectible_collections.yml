@@ -1,0 +1,29 @@
+version: 2
+
+models:
+  - name: axie_collectible_collections
+    meta:
+      blockchain: ronin
+      project: axie
+      contributors: axie-dashboard
+    config:
+      tags: ['static', 'axie', 'ronin']
+    description: >
+      Maps a Ronin Axie ERC-721 token_id to its collectible collection
+      (Origin, Mystic, Shiny, Japanese, Summer, Nightmare, Christmas, MEO).
+      Seed-backed: collection membership derives from Axie genes/parts and is
+      sourced from the Sky Mavis API. Each token resolves to a single collection
+      by priority (Mystic > Origin > MEO > Shiny > Nightmare > Summer > Japanese
+      > Christmas). Join to nft.trades on token_id to attribute sales.
+    columns:
+      - name: token_id
+        description: "Axie ERC-721 token id on Ronin (contract 0x32950db2a7164ae833121501c797d79e7b79d74c)."
+        tests:
+          - unique
+          - not_null
+      - name: collection
+        description: "Collectible collection the Axie belongs to."
+        tests:
+          - not_null
+          - accepted_values:
+              values: ['Origin', 'Mystic', 'Shiny', 'Japanese', 'Summer', 'Nightmare', 'Christmas', 'MEO']

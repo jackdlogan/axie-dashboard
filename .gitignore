@@ -7,3 +7,6 @@ dist
 data/
 *.duckdb
 *.duckdb.wal
+
+# Generated Dune spellbook seed (recreate with scripts/export-collection-map.mjs)
+dune/seeds/*.csv

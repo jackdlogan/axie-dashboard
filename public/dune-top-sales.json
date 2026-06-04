@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-06-04T11:09:31.841Z",
+  "generatedAt": "2026-06-04T15:28:09.810Z",
   "sales": [
     {
       "tx_hash": "0x2c2f1dfdddcc13173fbfa8543b689290eb052a26e3f1ca0e954284c48af2e9c1",
@@ -11,7 +11,8 @@
       "price_usd": 2681.79937609068,
       "name": "Lazyiv.eth",
       "cls": "Plant",
-      "image": "https://assets.axieinfinity.com/axies/2833/axie/axie-full-transparent.png"
+      "image": "https://assets.axieinfinity.com/axies/2833/axie/axie-full-transparent.png",
+      "collectible": "Mystic"
     },
     {
       "tx_hash": "0x9916c4f8f807dff0756d1501788de5404dd5b7a6f50d783f627ca39bf4b095a3",
@@ -23,7 +24,8 @@
       "price_usd": 2588.2806,
       "name": "",
       "cls": "Beast",
-      "image": "https://assets.axieinfinity.com/axies/2812/axie/axie-full-transparent.png"
+      "image": "https://assets.axieinfinity.com/axies/2812/axie/axie-full-transparent.png",
+      "collectible": "Mystic"
     },
     {
       "tx_hash": "0xe2693ddcfd47ae42e4eea22caa9e21d30cacc1fcb960be32718395e4e5ae60a9",
@@ -35,7 +37,8 @@
       "price_usd": 2483.83000975,
       "name": "Axie #2438",
       "cls": "Aquatic",
-      "image": "https://assets.axieinfinity.com/axies/2438/axie/axie-full-transparent.png"
+      "image": "https://assets.axieinfinity.com/axies/2438/axie/axie-full-transparent.png",
+      "collectible": "Mystic"
     },
     {
       "tx_hash": "0xe2693ddcfd47ae42e4eea22caa9e21d30cacc1fcb960be32718395e4e5ae60a9",
@@ -47,7 +50,8 @@
       "price_usd": 2286.79725,
       "name": "...",
       "cls": "Aquatic",
-      "image": "https://assets.axieinfinity.com/axies/2168/axie/axie-full-transparent.png"
+      "image": "https://assets.axieinfinity.com/axies/2168/axie/axie-full-transparent.png",
+      "collectible": "Mystic"
     },
     {
       "tx_hash": "0xe2693ddcfd47ae42e4eea22caa9e21d30cacc1fcb960be32718395e4e5ae60a9",
@@ -59,7 +63,8 @@
       "price_usd": 2268.8849999999998,
       "name": "Fuzzy Hair ❤️",
       "cls": "Plant",
-      "image": "https://assets.axieinfinity.com/axies/1331/axie/axie-full-transparent.png"
+      "image": "https://assets.axieinfinity.com/axies/1331/axie/axie-full-transparent.png",
+      "collectible": "Mystic"
     },
     {
       "tx_hash": "0x55a55b48c1c4b641a4cdbf360b188160f5bc97333708c6b714a42de9c8e9b712",
@@ -71,7 +76,8 @@
       "price_usd": 2178.7337918525154,
       "name": "The DON",
       "cls": "Aquatic",
-      "image": "https://assets.axieinfinity.com/axies/2561/axie/axie-full-transparent.png"
+      "image": "https://assets.axieinfinity.com/axies/2561/axie/axie-full-transparent.png",
+      "collectible": "Mystic"
     },
     {
       "tx_hash": "0x405e5eabdffbd6142a27b841fea8e04e183f4e976f3b88efb69b0cc904952dd8",
@@ -83,7 +89,8 @@
       "price_usd": 2119.167477248409,
       "name": "StarDazed",
       "cls": "Plant",
-      "image": "https://assets.axieinfinity.com/axies/1160/axie/axie-full-transparent.png"
+      "image": "https://assets.axieinfinity.com/axies/1160/axie/axie-full-transparent.png",
+      "collectible": "Mystic"
     },
     {
       "tx_hash": "0x2e415673e135ac0e6425497bc69a361646ad8062c3336fb9480e6c10ff09293d",
@@ -95,7 +102,8 @@
       "price_usd": 606.813955,
       "name": "Vousy 야오",
       "cls": "Beast",
-      "image": "https://assets.axieinfinity.com/axies/1946/axie/axie-full-transparent.png"
+      "image": "https://assets.axieinfinity.com/axies/1946/axie/axie-full-transparent.png",
+      "collectible": "Origin"
     },
     {
       "tx_hash": "0xe23a6edf846cc38936dcee57f6234a07934581350a495f35fba06460c9b13b49",
@@ -107,7 +115,8 @@
       "price_usd": 602.5896499999999,
       "name": "LVL 60+ Nightmare + Origin",
       "cls": "Aquatic",
-      "image": "https://assets.axieinfinity.com/axies/3435/axie/axie-full-transparent.png"
+      "image": "https://assets.axieinfinity.com/axies/3435/axie/axie-full-transparent.png",
+      "collectible": "Origin"
     },
     {
       "tx_hash": "0x0b88d26e3706ccdf6a12bd424b6481a8069edb302f172d6f6f9b1b92de0b44e1",
@@ -119,7 +128,8 @@
       "price_usd": 505.3011073339321,
       "name": "KBO-1783🦁🐯",
       "cls": "Beast",
-      "image": "https://assets.axieinfinity.com/axies/2894/axie/axie-full-transparent.png"
+      "image": "https://assets.axieinfinity.com/axies/2894/axie/axie-full-transparent.png",
+      "collectible": "Origin"
     },
     {
       "tx_hash": "0x81359185e91e78ad16245ad9e359bd0917c6076887ccfa9c4d48c041aed1bece",
@@ -131,7 +141,8 @@
       "price_usd": 492.75386311207996,
       "name": "Kylie Jenner",
       "cls": "Beast",
-      "image": "https://assets.axieinfinity.com/axies/3142/axie/axie-full-transparent.png"
+      "image": "https://assets.axieinfinity.com/axies/3142/axie/axie-full-transparent.png",
+      "collectible": "Origin"
     },
     {
       "tx_hash": "0x84c7aab240aa32bb5c4b5e31e646e0dd27450f3b61b9839d2a66d9d9438adbbb",
@@ -143,7 +154,34 @@
       "price_usd": 485.3651394350024,
       "name": "NM part",
       "cls": "Aquatic",
-      "image": "https://assets.axieinfinity.com/axies/1710/axie/axie-full-transparent.png"
+      "image": "https://assets.axieinfinity.com/axies/1710/axie/axie-full-transparent.png",
+      "collectible": "Origin"
+    },
+    {
+      "tx_hash": "0xb391c0e35295bd89242b20ab57883f16b3a699fb393cc51f59d673002cf1e859",
+      "token_id": "1957",
+      "block_time": "2026-06-04 12:54:53.000 UTC",
+      "buyer": "0xa3039898a3dd892997cc8d0f081f72c7f48fdb96",
+      "currency": "WRON",
+      "price": 6710.44994408789,
+      "price_usd": 482.7900316773473,
+      "name": " NO OFFER",
+      "cls": "Beast",
+      "image": "https://assets.axieinfinity.com/axies/1957/axie/axie-full-transparent.png",
+      "collectible": "Origin"
+    },
+    {
+      "tx_hash": "0xf0b5f0a69bd3a388107bdf33ba854eada6d60742e1521a526e0e26371c2871ef",
+      "token_id": "2261",
+      "block_time": "2026-06-04 13:58:45.000 UTC",
+      "buyer": "0x7c01a2cd31e95551451aff455565d2e3c58093a0",
+      "currency": "WETH",
+      "price": 0.27,
+      "price_usd": 479.8278000000001,
+      "name": "Flopin",
+      "cls": "Aquatic",
+      "image": "https://assets.axieinfinity.com/axies/2261/axie/axie-full-transparent.png",
+      "collectible": "Origin"
     },
     {
       "tx_hash": "0xf9e7d30e69bcd8a2fb812d6ba576095abd31cd590beb64899b7e916366dbb78a",
@@ -155,7 +193,8 @@
       "price_usd": 465.912,
       "name": "water lily",
       "cls": "Aquatic",
-      "image": "https://assets.axieinfinity.com/axies/2569/axie/axie-full-transparent.png"
+      "image": "https://assets.axieinfinity.com/axies/2569/axie/axie-full-transparent.png",
+      "collectible": "Origin"
     },
     {
       "tx_hash": "0xac1b1708c36a35f12a5b1c64350025c09b40b88c5ef7aface847d1d53f772778",
@@ -167,7 +206,8 @@
       "price_usd": 465.22330000000005,
       "name": "",
       "cls": "Aquatic",
-      "image": "https://assets.axieinfinity.com/axies/1477/axie/axie-full-transparent.png"
+      "image": "https://assets.axieinfinity.com/axies/1477/axie/axie-full-transparent.png",
+      "collectible": "Origin"
     },
     {
       "tx_hash": "0x391dbe5c34587d60ef5574c8c7e603b3e3fabfbb7a956a77c1cb39656f2df64e",
@@ -179,7 +219,21 @@
       "price_usd": 462.5064,
       "name": "Axie #552",
       "cls": "Beast",
-      "image": "https://assets.axieinfinity.com/axies/552/axie/axie-full-transparent.png"
+      "image": "https://assets.axieinfinity.com/axies/552/axie/axie-full-transparent.png",
+      "collectible": "Origin"
+    },
+    {
+      "tx_hash": "0xcb727aef1f3ce7735c941bd4964693ef92e120ebb1fd30a56ace2519f9a1006d",
+      "token_id": "1607",
+      "block_time": "2026-06-04 12:54:17.000 UTC",
+      "buyer": "0xa6ec933979ab95e790e5268647d1339296ec72c8",
+      "currency": "WETH",
+      "price": 0.25,
+      "price_usd": 444.405,
+      "name": "Rosa",
+      "cls": "Plant",
+      "image": "https://assets.axieinfinity.com/axies/1607/axie/axie-full-transparent.png",
+      "collectible": "Origin"
     },
     {
       "tx_hash": "0xc3c20ba38e8b4a391894ae2b1b9c3eb37ddc788db0568b239f9dd148803c6cae",
@@ -191,7 +245,8 @@
       "price_usd": 258.91074149670123,
       "name": "05 evolds",
       "cls": "Beast",
-      "image": "https://assets.axieinfinity.com/axies/12034820/axie/axie-full-transparent.png"
+      "image": "https://assets.axieinfinity.com/axies/12034820/axie/axie-full-transparent.png",
+      "collectible": "MEO"
     },
     {
       "tx_hash": "0x0f8445aa95bd26cf6d8cca9b04e2d8a2293dca4896ff12409f7b3726a4c568da",
@@ -203,7 +258,8 @@
       "price_usd": 247.35344970069298,
       "name": "56 SLIPS rare xmas",
       "cls": "Beast",
-      "image": "https://assets.axieinfinity.com/axies/138190/axie/axie-full-transparent.png"
+      "image": "https://assets.axieinfinity.com/axies/138190/axie/axie-full-transparent.png",
+      "collectible": "Christmas"
     },
     {
       "tx_hash": "0x065bac7f90da3bc9ba0fa0d132bbd9858c7abd113f3a077295fbbf01dfb9a9d1",
@@ -215,7 +271,8 @@
       "price_usd": 220.79688449294167,
       "name": "Only 1 Wavy Shinny with Whisper (Navaga/Tiny)",
       "cls": "Mech",
-      "image": "https://assets.axieinfinity.com/axies/11434191/axie/axie-full-transparent.png"
+      "image": "https://assets.axieinfinity.com/axies/11434191/axie/axie-full-transparent.png",
+      "collectible": "Shiny"
     },
     {
       "tx_hash": "0xb992df7fde88443b545d39b49dacacdde940acf98d02d19314d157570e99b577",
@@ -227,7 +284,8 @@
       "price_usd": 201.101,
       "name": "🔯Equipo Tiny Fan [IPX]🔯",
       "cls": "Reptile",
-      "image": "https://assets.axieinfinity.com/axies/12095085/axie/axie-full-transparent.png"
+      "image": "https://assets.axieinfinity.com/axies/12095085/axie/axie-full-transparent.png",
+      "collectible": "Shiny"
     },
     {
       "tx_hash": "0x4e5220affd1b60caefd95995cbd393a7716230083d4fd9f0ca314e50566f4a63",
@@ -239,7 +297,8 @@
       "price_usd": 200.26285986244497,
       "name": "Only 1 | 1x Rare | DC : Alex88#7638",
       "cls": "Bird",
-      "image": "https://assets.axieinfinity.com/axies/4009249/axie/axie-full-transparent.png"
+      "image": "https://assets.axieinfinity.com/axies/4009249/axie/axie-full-transparent.png",
+      "collectible": "Nightmare"
     },
     {
       "tx_hash": "0x27a97f7557a9fe416c9f9636ebd459b51260368ac7866feeae484f5f951dce12",
@@ -251,7 +310,8 @@
       "price_usd": 199.02224423004637,
       "name": "SHINY",
       "cls": "Bird",
-      "image": "https://assets.axieinfinity.com/axies/11457842/axie/axie-full-transparent.png"
+      "image": "https://assets.axieinfinity.com/axies/11457842/axie/axie-full-transparent.png",
+      "collectible": "Shiny"
     },
     {
       "tx_hash": "0xcdd8a945393a68ff2542c5459ede7f0b408f2146407dbc9fe305989ee928dfbf",
@@ -263,7 +323,8 @@
       "price_usd": 198.307494,
       "name": "💖 Shiny Cutie ✨️",
       "cls": "Mech",
-      "image": "https://assets.axieinfinity.com/axies/11445742/axie/axie-full-transparent.png"
+      "image": "https://assets.axieinfinity.com/axies/11445742/axie/axie-full-transparent.png",
+      "collectible": "Shiny"
     },
     {
       "tx_hash": "0xebf0a948847ccadb5d24ecf3cf3fea22b69442bcd8225db2e6a1c7122a0a0b71",
@@ -275,7 +336,8 @@
       "price_usd": 178.974,
       "name": "Alpha Desert",
       "cls": "Beast",
-      "image": "https://assets.axieinfinity.com/axies/4387/axie/axie-full-transparent.png"
+      "image": "https://assets.axieinfinity.com/axies/4387/axie/axie-full-transparent.png",
+      "collectible": "MEO"
     },
     {
       "tx_hash": "0xa54a9ade35f2c4a76fc264760af6d4a8ab9ddd4eb375948ee14aa684b6dbf15d",
@@ -287,7 +349,8 @@
       "price_usd": 176.10055,
       "name": "Klaus' Hercules",
       "cls": "Bug",
-      "image": "https://assets.axieinfinity.com/axies/21451/axie/axie-full-transparent.png"
+      "image": "https://assets.axieinfinity.com/axies/21451/axie/axie-full-transparent.png",
+      "collectible": "Christmas"
     },
     {
       "tx_hash": "0xd8a6e242bc3e635852769523bf2d4e61ad647212a72113dfc6c6fe6f7998fcab",
@@ -299,7 +362,8 @@
       "price_usd": 176.05098221765175,
       "name": "4 evo//playable//tiny fan & perch team",
       "cls": "Beast",
-      "image": "https://assets.axieinfinity.com/axies/11984273/axie/axie-full-transparent.png"
+      "image": "https://assets.axieinfinity.com/axies/11984273/axie/axie-full-transparent.png",
+      "collectible": "Shiny"
     },
     {
       "tx_hash": "0x9185c229ddc708fe2560ef7c3909f48dc897d3d42f4ff81d151b8c92a84da88a",
@@ -311,7 +375,8 @@
       "price_usd": 175.9298955217031,
       "name": "Axie #11452668",
       "cls": "Bug",
-      "image": "https://assets.axieinfinity.com/axies/11452668/axie/axie-full-transparent.png"
+      "image": "https://assets.axieinfinity.com/axies/11452668/axie/axie-full-transparent.png",
+      "collectible": "Shiny"
     },
     {
       "tx_hash": "0xf35d550d33c70ed6d1b459e2d507033c649c35e23983053ce7710b051b6d6969",
@@ -323,7 +388,8 @@
       "price_usd": 174.24373999999997,
       "name": "",
       "cls": "Bird",
-      "image": "https://assets.axieinfinity.com/axies/8620/axie/axie-full-transparent.png"
+      "image": "https://assets.axieinfinity.com/axies/8620/axie/axie-full-transparent.png",
+      "collectible": "MEO"
     },
     {
       "tx_hash": "0x512249eb58e3d7b97fba8670abfec79358757fb86a4016926b7325d386b3c28f",
@@ -335,7 +401,8 @@
       "price_usd": 174.17962775123368,
       "name": "💙",
       "cls": "Aquatic",
-      "image": "https://assets.axieinfinity.com/axies/9155/axie/axie-full-transparent.png"
+      "image": "https://assets.axieinfinity.com/axies/9155/axie/axie-full-transparent.png",
+      "collectible": "MEO"
     },
     {
       "tx_hash": "0xa7b8ba539bab5992bc56a6ec7255a315ee1c0227860b8432fb0ca797becc56e6",
@@ -347,7 +414,8 @@
       "price_usd": 173.53830783493967,
       "name": "Beastmeotu",
       "cls": "Beast",
-      "image": "https://assets.axieinfinity.com/axies/11411126/axie/axie-full-transparent.png"
+      "image": "https://assets.axieinfinity.com/axies/11411126/axie/axie-full-transparent.png",
+      "collectible": "MEO"
     },
     {
       "tx_hash": "0xe7e5bf78ac451935dea08194885eec0a9350e410c09be6115539ae16716d0694",
@@ -359,7 +427,8 @@
       "price_usd": 173.480974729166,
       "name": "SHINY",
       "cls": "Aquatic",
-      "image": "https://assets.axieinfinity.com/axies/11456840/axie/axie-full-transparent.png"
+      "image": "https://assets.axieinfinity.com/axies/11456840/axie/axie-full-transparent.png",
+      "collectible": "Shiny"
     },
     {
       "tx_hash": "0x17e905786e435124a4186dc0789777251d7bdb56fc06701fa649f871e2dde877",
@@ -371,7 +440,8 @@
       "price_usd": 169.82141758883702,
       "name": "David Bowie",
       "cls": "Aquatic",
-      "image": "https://assets.axieinfinity.com/axies/11408870/axie/axie-full-transparent.png"
+      "image": "https://assets.axieinfinity.com/axies/11408870/axie/axie-full-transparent.png",
+      "collectible": "Shiny"
     },
     {
       "tx_hash": "0x8506e2651ea2b9669e787c01e7646b3812c01d200e5b3b004d201cf0416458c5",
@@ -383,7 +453,8 @@
       "price_usd": 169.59625408561712,
       "name": "Unique Virgin ",
       "cls": "Plant",
-      "image": "https://assets.axieinfinity.com/axies/22877/axie/axie-full-transparent.png"
+      "image": "https://assets.axieinfinity.com/axies/22877/axie/axie-full-transparent.png",
+      "collectible": "Christmas"
     },
     {
       "tx_hash": "0x6c0e867ac21c7e10e40c7785b786050ffc866cc06cfea9832cdcfb269912dc22",
@@ -395,7 +466,8 @@
       "price_usd": 169.2375390527504,
       "name": "5x 🌞🌞🌞🌞🌞",
       "cls": "Plant",
-      "image": "https://assets.axieinfinity.com/axies/11438265/axie/axie-full-transparent.png"
+      "image": "https://assets.axieinfinity.com/axies/11438265/axie/axie-full-transparent.png",
+      "collectible": "Shiny"
     },
     {
       "tx_hash": "0xb2f20c6b8d527dd528d130b98b7d2d51a66b81801dc1610ed3c56b03a7f6459b",
@@ -407,7 +479,8 @@
       "price_usd": 168.4458832258097,
       "name": "Moon M11",
       "cls": "Plant",
-      "image": "https://assets.axieinfinity.com/axies/11734292/axie/axie-full-transparent.png"
+      "image": "https://assets.axieinfinity.com/axies/11734292/axie/axie-full-transparent.png",
+      "collectible": "MEO"
     },
     {
       "tx_hash": "0x81903427a1edf99d5f7c4c195a7552eddf1c8a2ecc2b61a451b2170399ac3d72",
@@ -419,7 +492,8 @@
       "price_usd": 168.27780530863373,
       "name": "MEO #4330",
       "cls": "Aquatic",
-      "image": "https://assets.axieinfinity.com/axies/4330/axie/axie-full-transparent.png"
+      "image": "https://assets.axieinfinity.com/axies/4330/axie/axie-full-transparent.png",
+      "collectible": "MEO"
     },
     {
       "tx_hash": "0xe9f5860f76801cbd50b1bd4590cb065b08eb2ce7ff26e278e8e2eb0a30920a67",
@@ -431,7 +505,8 @@
       "price_usd": 168.25611109445398,
       "name": "Unicornio pimenton",
       "cls": "Plant",
-      "image": "https://assets.axieinfinity.com/axies/137818/axie/axie-full-transparent.png"
+      "image": "https://assets.axieinfinity.com/axies/137818/axie/axie-full-transparent.png",
+      "collectible": "Christmas"
     },
     {
       "tx_hash": "0xb481bd315d1aa40bf6da6fced9ec61478c97f975a1c037f4bcef5877e1e98c1c",
@@ -443,7 +518,8 @@
       "price_usd": 167.17911802610638,
       "name": "Axie #12069605",
       "cls": "Aquatic",
-      "image": "https://assets.axieinfinity.com/axies/12069605/axie/axie-full-transparent.png"
+      "image": "https://assets.axieinfinity.com/axies/12069605/axie/axie-full-transparent.png",
+      "collectible": "MEO"
     },
     {
       "tx_hash": "0xac9e3d482db0ac8a90d7bde9be40595c8a5183775fa0e6d500cb45eb7a7729bb",
@@ -455,7 +531,8 @@
       "price_usd": 166.09066683476922,
       "name": "MEO MEOOOW 💜",
       "cls": "Beast",
-      "image": "https://assets.axieinfinity.com/axies/12034411/axie/axie-full-transparent.png"
+      "image": "https://assets.axieinfinity.com/axies/12034411/axie/axie-full-transparent.png",
+      "collectible": "MEO"
     },
     {
       "tx_hash": "0x980a2c8c30061e8ef68746ac9894ac4678d118d2646571c79075a82db3fd6b7d",
@@ -467,7 +544,8 @@
       "price_usd": 165.198954136554,
       "name": "Axie #11437006",
       "cls": "Aquatic",
-      "image": "https://assets.axieinfinity.com/axies/11437006/axie/axie-full-transparent.png"
+      "image": "https://assets.axieinfinity.com/axies/11437006/axie/axie-full-transparent.png",
+      "collectible": "Shiny"
     },
     {
       "tx_hash": "0x6eebb10f55cc54ece440fa4c6bf289c118a730c2b9223121efe1c6179ded57b1",
@@ -479,7 +557,8 @@
       "price_usd": 165.00981000000002,
       "name": "BLEED or OWL beast",
       "cls": "Beast",
-      "image": "https://assets.axieinfinity.com/axies/10370/axie/axie-full-transparent.png"
+      "image": "https://assets.axieinfinity.com/axies/10370/axie/axie-full-transparent.png",
+      "collectible": "MEO"
     },
     {
       "tx_hash": "0xa8d6f20fd5755192187d0cb3eb6d798c361e9a3bdecb3c7bb2930be86fcc6ec7",
@@ -491,7 +570,8 @@
       "price_usd": 164.58418600000002,
       "name": "Blue Rudolph",
       "cls": "Aquatic",
-      "image": "https://assets.axieinfinity.com/axies/20443/axie/axie-full-transparent.png"
+      "image": "https://assets.axieinfinity.com/axies/20443/axie/axie-full-transparent.png",
+      "collectible": "Christmas"
     },
     {
       "tx_hash": "0x615d3f8999b9175adfa3a39938d95e93657e5b13dc22875d4814e2cbe0771475",
@@ -503,7 +583,8 @@
       "price_usd": 162.32912644218396,
       "name": "7154",
       "cls": "Beast",
-      "image": "https://assets.axieinfinity.com/axies/7154/axie/axie-full-transparent.png"
+      "image": "https://assets.axieinfinity.com/axies/7154/axie/axie-full-transparent.png",
+      "collectible": "MEO"
     },
     {
       "tx_hash": "0x65cda3d255209ec5eeb058559f660f2b76ba232c767bcabecd5c7080d04862ff",
@@ -515,7 +596,8 @@
       "price_usd": 162.25768120931363,
       "name": "Yahs",
       "cls": "Aquatic",
-      "image": "https://assets.axieinfinity.com/axies/9209/axie/axie-full-transparent.png"
+      "image": "https://assets.axieinfinity.com/axies/9209/axie/axie-full-transparent.png",
+      "collectible": "MEO"
     },
     {
       "tx_hash": "0x28e1882145c09d9e99b67aab88a6246de47e5d21e91c24a968c0ef7051d6407e",
@@ -527,7 +609,8 @@
       "price_usd": 161.6640548904522,
       "name": "RUSH SALE!!!!",
       "cls": "Aquatic",
-      "image": "https://assets.axieinfinity.com/axies/8903/axie/axie-full-transparent.png"
+      "image": "https://assets.axieinfinity.com/axies/8903/axie/axie-full-transparent.png",
+      "collectible": "MEO"
     },
     {
       "tx_hash": "0x40eecf9c99c2ccaca3fd17c79c31edb5fbc9d6c42350bee94f7c3e82d06a81aa",
@@ -539,7 +622,8 @@
       "price_usd": 161.53808,
       "name": "Axie #11447270",
       "cls": "Bird",
-      "image": "https://assets.axieinfinity.com/axies/11447270/axie/axie-full-transparent.png"
+      "image": "https://assets.axieinfinity.com/axies/11447270/axie/axie-full-transparent.png",
+      "collectible": "Shiny"
     },
     {
       "tx_hash": "0xc9f608318bea193b67b0a31518cbb4cbb04052af9ca6f1362cdcc2fc3f8a2d22",
@@ -551,7 +635,8 @@
       "price_usd": 161.3248395556,
       "name": "Axie #11423486",
       "cls": "Aquatic",
-      "image": "https://assets.axieinfinity.com/axies/11423486/axie/axie-full-transparent.png"
+      "image": "https://assets.axieinfinity.com/axies/11423486/axie/axie-full-transparent.png",
+      "collectible": "Shiny"
     },
     {
       "tx_hash": "0xef37157a207d47477b55afd7d05eb5a04ff5f23c6535ba466711edb89eedd867",
@@ -563,43 +648,8 @@
       "price_usd": 161.23968,
       "name": "Islander",
       "cls": "Beast",
-      "image": "https://assets.axieinfinity.com/axies/5056/axie/axie-full-transparent.png"
-    },
-    {
-      "tx_hash": "0xd25e9de4219973e620bfd90ef28a618c38dce1eaf31b51130844c7ce4fe09c89",
-      "token_id": "6436228",
-      "block_time": "2026-05-30 08:22:09.000 UTC",
-      "buyer": "0x26295d16159b5bb6ee9f0dd63f2c1a06991b5510",
-      "currency": "USDC",
-      "price": 160.315644,
-      "price_usd": 160.32045346932,
-      "name": "Axie #6436228",
-      "cls": "Plant",
-      "image": "https://assets.axieinfinity.com/axies/6436228/axie/axie-full-transparent.png"
-    },
-    {
-      "tx_hash": "0xf519882c1a6ea511aab4185093d3c6050403eee6598d800faa6ec70177d8bb06",
-      "token_id": "6963",
-      "block_time": "2026-06-03 09:59:17.000 UTC",
-      "buyer": "0x49f3cbf452f759858c5bfbeb1e3176aa734affc6",
-      "currency": "WETH",
-      "price": 0.085,
-      "price_usd": 159.75750000000002,
-      "name": "",
-      "cls": "Aquatic",
-      "image": "https://assets.axieinfinity.com/axies/6963/axie/axie-full-transparent.png"
-    },
-    {
-      "tx_hash": "0x46bb8537cefabcf0c699ebdee871e5ae40ef41610e3f9b6d8a859f730c44543c",
-      "token_id": "8416",
-      "block_time": "2026-06-03 09:59:43.000 UTC",
-      "buyer": "0x49f3cbf452f759858c5bfbeb1e3176aa734affc6",
-      "currency": "WETH",
-      "price": 0.085,
-      "price_usd": 159.75750000000002,
-      "name": "3 EVO RAGE METAMORPH",
-      "cls": "Aquatic",
-      "image": "https://assets.axieinfinity.com/axies/8416/axie/axie-full-transparent.png"
+      "image": "https://assets.axieinfinity.com/axies/5056/axie/axie-full-transparent.png",
+      "collectible": "MEO"
     }
   ]
 }

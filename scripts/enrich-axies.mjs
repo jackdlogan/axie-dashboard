@@ -11,13 +11,18 @@ import { resolve, dirname } from 'node:path'
 import { fileURLToPath } from 'node:url'
 import { openDb } from './lib/db.mjs'
 import { createClient } from './lib/api.mjs'
+import { collectibleLabel } from './lib/collectible.mjs'
 
 const ROOT = resolve(dirname(fileURLToPath(import.meta.url)), '..')
 const PUBLIC = resolve(ROOT, 'public')
 
 const QUERY = `query($ids: [ID!]) {
   axies(axieIds: $ids, size: 100) {
-    results { id name class image breedCount }
+    results {
+      id name class image breedCount
+      numMystic numJapan numXmas title
+      parts { specialGenes }
+    }
   }
 }`
 
@@ -33,11 +38,12 @@ async function main() {
 
   if (ids.length) {
     const ins = await db.prepare(
-      `INSERT INTO axie_meta (token_id, name, axie_class, image, breed_count, fetched_at)
-       VALUES (?,?,?,?,?,?)
+      `INSERT INTO axie_meta (token_id, name, axie_class, image, breed_count, collectible, fetched_at)
+       VALUES (?,?,?,?,?,?,?)
        ON CONFLICT (token_id) DO UPDATE SET
          name=excluded.name, axie_class=excluded.axie_class,
-         image=excluded.image, breed_count=excluded.breed_count, fetched_at=excluded.fetched_at`
+         image=excluded.image, breed_count=excluded.breed_count,
+         collectible=excluded.collectible, fetched_at=excluded.fetched_at`
     )
     for (let i = 0; i < ids.length; i += 100) {
       const batch = ids.slice(i, i + 100)
@@ -48,7 +54,8 @@ async function main() {
         ins.bindVarchar(3, a.class ?? '')
         ins.bindVarchar(4, a.image ?? '')
         ins.bindInteger(5, Number(a.breedCount ?? 0))
-        ins.bindVarchar(6, new Date().toISOString())
+        ins.bindVarchar(6, collectibleLabel(a))
+        ins.bindVarchar(7, new Date().toISOString())
         await ins.run()
       }
     }
@@ -58,7 +65,8 @@ async function main() {
   const rows = await db.all(`
     SELECT t.tx_hash, t.token_id, t.block_time, t.buyer, t.currency,
            t.price, t.price_usd,
-           m.name AS name, m.axie_class AS cls, m.image AS image
+           m.name AS name, m.axie_class AS cls, m.image AS image,
+           m.collectible AS collectible
     FROM dune_top_sales t
     LEFT JOIN axie_meta m USING (token_id)
     ORDER BY t.price_usd DESC NULLS LAST`)

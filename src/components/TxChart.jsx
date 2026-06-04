@@ -26,16 +26,16 @@ export default function TxChart({ data }) {
       <h2>Number of Sales by Period</h2>
       <ResponsiveContainer width="100%" height={300}>
         <BarChart data={data} margin={{ top: 10, right: 16, left: 8, bottom: 0 }}>
-          <CartesianGrid strokeDasharray="3 3" stroke="#2a2f45" vertical={false} />
-          <XAxis dataKey="period" stroke="#8a90a6" tickLine={false} />
+          <CartesianGrid strokeDasharray="3 3" stroke="#20222b" vertical={false} />
+          <XAxis dataKey="period" stroke="#6b7180" tickLine={false} />
           <YAxis
-            stroke="#8a90a6"
+            stroke="#6b7180"
             tickLine={false}
             tickFormatter={(v) => compactNum(v)}
             width={48}
           />
           <Tooltip content={<TxTooltip />} cursor={{ fill: '#ffffff10' }} />
-          <Bar dataKey="count" fill="#2dd4a7" radius={[6, 6, 0, 0]} maxBarSize={90} />
+          <Bar dataKey="count" fill="#8aa0ff" radius={[6, 6, 0, 0]} maxBarSize={90} />
         </BarChart>
       </ResponsiveContainer>
     </div>

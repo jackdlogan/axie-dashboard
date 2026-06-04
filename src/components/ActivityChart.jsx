@@ -27,16 +27,16 @@ export default function ActivityChart({ data }) {
       <h2>Sales Volume by Period (USD)</h2>
       <ResponsiveContainer width="100%" height={300}>
         <BarChart data={data} margin={{ top: 10, right: 16, left: 8, bottom: 0 }}>
-          <CartesianGrid strokeDasharray="3 3" stroke="#2a2f45" vertical={false} />
-          <XAxis dataKey="period" stroke="#8a90a6" tickLine={false} />
+          <CartesianGrid strokeDasharray="3 3" stroke="#20222b" vertical={false} />
+          <XAxis dataKey="period" stroke="#6b7180" tickLine={false} />
           <YAxis
-            stroke="#8a90a6"
+            stroke="#6b7180"
             tickLine={false}
             tickFormatter={(v) => compactUsd(v)}
             width={64}
           />
           <Tooltip content={<VolumeTooltip />} cursor={{ fill: '#ffffff10' }} />
-          <Bar dataKey="volumeUsd" fill="#5b8cff" radius={[6, 6, 0, 0]} maxBarSize={90} />
+          <Bar dataKey="volumeUsd" fill="#4e6bff" radius={[6, 6, 0, 0]} maxBarSize={90} />
         </BarChart>
       </ResponsiveContainer>
     </div>

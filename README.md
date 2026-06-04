@@ -9,9 +9,14 @@ Infinity marketplace (app.axieinfinity.com), built on the Sky Mavis GraphQL API.
   new Axies minted, and Axies ascended in the last 7 days.
 - **Sales Volume by Period** — USD volume across the 24h / 7d / 30d windows.
 - **Number of Sales by Period** — sale counts across the same windows.
-- **90-Day Axie Sales History** — a daily trend chart (volume USD / sales count /
-  avg price) built from a local backfill, since the API only exposes ≤30-day
-  aggregates. See "90-day history" below.
+- **Market Momentum** — week-over-week and month-over-month change in volume,
+  sales, buyers, and average price, derived from the 90-day daily series.
+- **90-Day Axie Sales History** — a daily trend chart (volume USD / price
+  percentiles / average price / sales count / buyers) built from a local
+  backfill, since the API only exposes ≤30-day aggregates. See "90-day history"
+  below.
+- **Top Buyers** — leaderboard of the biggest buyers across recent top sales,
+  with total spend, number of buys, and favorite class.
 - **Collection Analytics** — per-collection floor price (ETH + USD), unique
   holders, 24h volume (ETH + USD) and supply for all 16 collections, sortable.
 - **Top Axie Sales** — the highest sales for a selected period (24h / 7d / 30d),
