@@ -1,0 +1,20 @@
+# Host Caddy snippet — shared VPS (another app already owns ports 80/443)
+#
+# Your system Caddy keeps listening on :80 and :443. The dashboard Docker stack
+# binds to localhost only (default 127.0.0.1:8090). Add this site block to your
+# existing Caddyfile, then reload Caddy.
+#
+# 1. Set DOMAIN + DASHBOARD_HOST_PORT in axie-dashboard/.env (default port 8090)
+# 2. Start the app:
+#      docker compose -f docker-compose.yml -f docker-compose.proxy.yml up -d --build
+# 3. Paste the block below into /etc/caddy/Caddyfile (adjust domain + port)
+# 4. Validate + reload:
+#      sudo caddy validate --config /etc/caddy/Caddyfile
+#      sudo systemctl reload caddy
+#
+# DNS: create an A record for the dashboard subdomain → this VPS IP.
+
+dashboard.example.com {
+	encode zstd gzip
+	reverse_proxy 127.0.0.1:8090
+}

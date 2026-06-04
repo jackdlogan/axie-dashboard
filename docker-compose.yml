@@ -4,7 +4,10 @@
 #   caddy   : reverse proxy with automatic HTTPS for $DOMAIN
 #
 # Setup: copy .env.example -> .env, fill keys + DOMAIN + ACME_EMAIL, then:
-#   docker compose up -d --build
+#   Dedicated VPS (this stack owns 80/443):
+#     docker compose --profile caddy up -d --build
+#   Shared VPS (another app already uses 80/443):
+#     docker compose -f docker-compose.yml -f docker-compose.proxy.yml up -d --build
 
 services:
   web:
@@ -32,6 +35,7 @@ services:
       - dashboard-data:/app/data # persists the DuckDB warehouse
 
   caddy:
+    profiles: ["caddy"]
     image: caddy:2
     restart: unless-stopped
     env_file: .env

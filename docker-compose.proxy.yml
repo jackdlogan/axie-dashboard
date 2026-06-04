@@ -1,0 +1,12 @@
+# Shared VPS: another app already owns ports 80/443 (nginx, host Caddy, etc.).
+# Skips the bundled Caddy container and binds the app to localhost only.
+#
+#   docker compose -f docker-compose.yml -f docker-compose.proxy.yml up -d --build
+#
+# Set DASHBOARD_HOST_PORT in .env (default 8090), then point host Caddy at
+# http://127.0.0.1:<port> — see deploy/caddy.host.example
+
+services:
+  web:
+    ports:
+      - "127.0.0.1:${DASHBOARD_HOST_PORT:-8090}:8080"
