@@ -65,7 +65,20 @@ CREATE TABLE IF NOT EXISTS axie_meta (
   axie_class  VARCHAR,
   image       VARCHAR,
   breed_count INTEGER,
+  collectible VARCHAR,             -- special collection label (Mystic/Origin/…) or '' if regular
   fetched_at  VARCHAR
+);
+-- Migrate older warehouses that predate the collectible column.
+ALTER TABLE axie_meta ADD COLUMN IF NOT EXISTS collectible VARCHAR;
+
+-- Daily median settle price (USD) per collectible collection, from Dune.
+-- Long format: one row per (day, collection). Powers the price-over-time chart.
+CREATE TABLE IF NOT EXISTS dune_collectible_daily (
+  day        DATE    NOT NULL,
+  collection VARCHAR NOT NULL,  -- Origin | Mystic | Shiny | Japanese | Summer | Nightmare | Christmas | MEO
+  sales      BIGINT,
+  median_usd DOUBLE,
+  PRIMARY KEY (day, collection)
 );
 
 -- Recent top sales from Dune (also drives trait enrichment by token_id).

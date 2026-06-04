@@ -35,13 +35,42 @@ export function loadDuneKey() {
 export function createDuneClient({ key = loadDuneKey() } = {}) {
   const headers = { 'X-Dune-API-Key': key }
 
+  // Transient failures (network blips, rate limits, gateway errors) should be
+  // retried with exponential backoff rather than aborting the whole ingest.
+  // 4xx other than 429 are permanent (bad query id, auth) — fail fast.
+  const RETRIABLE = new Set([408, 429, 500, 502, 503, 504])
+  const MAX_TRIES = 5
+
   async function req(path, init) {
-    const res = await fetch(`${BASE}${path}`, { ...init, headers: { ...headers, ...init?.headers } })
-    if (!res.ok) {
+    let lastErr
+    for (let attempt = 1; attempt <= MAX_TRIES; attempt++) {
+      let res
+      try {
+        res = await fetch(`${BASE}${path}`, { ...init, headers: { ...headers, ...init?.headers } })
+      } catch (e) {
+        // Network-level error (DNS, reset, timeout) — always retriable.
+        lastErr = e
+        if (attempt === MAX_TRIES) throw e
+        await backoff(attempt, res)
+        continue
+      }
+      if (res.ok) return res.json()
+
       const body = await res.text().catch(() => '')
-      throw new Error(`Dune ${res.status} ${res.statusText} on ${path} ${body.slice(0, 200)}`)
+      lastErr = new Error(`Dune ${res.status} ${res.statusText} on ${path} ${body.slice(0, 200)}`)
+      if (!RETRIABLE.has(res.status) || attempt === MAX_TRIES) throw lastErr
+      console.warn(`Dune ${res.status} on ${path} — retry ${attempt}/${MAX_TRIES - 1}`)
+      await backoff(attempt, res)
     }
-    return res.json()
+    throw lastErr
+  }
+
+  // Exponential backoff (1s, 2s, 4s, 8s) with jitter; honors Retry-After when
+  // the server sends it on a 429.
+  async function backoff(attempt, res) {
+    const retryAfter = Number(res?.headers?.get?.('retry-after'))
+    const base = Number.isFinite(retryAfter) && retryAfter > 0 ? retryAfter * 1000 : 2 ** (attempt - 1) * 1000
+    await sleep(base + Math.random() * 250)
   }
 
   // Walk paginated results for a completed execution or saved query.
