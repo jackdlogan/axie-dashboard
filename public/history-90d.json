@@ -1,0 +1,32 @@
+{
+  "collection": "Axie",
+  "contract": "0x32950db2a7164ae833121501c797d79e7b79d74c",
+  "windowDays": 0.03,
+  "generatedAt": "2026-06-04T08:13:54.181Z",
+  "latestTs": 1780560823,
+  "ethUsdAtGen": 1772.82,
+  "totals": {
+    "sales": 97,
+    "volumeEth": 0.05171684934757567,
+    "volumeUsdApprox": 91.6846648603691
+  },
+  "days": [
+    {
+      "date": "2026-06-04",
+      "count": 97,
+      "volumeEth": 0.05171684934757567,
+      "perClass": {
+        "Aquatic": 19,
+        "Reptile": 9,
+        "Plant": 25,
+        "Dusk": 16,
+        "Beast": 11,
+        "Mech": 9,
+        "Bug": 2,
+        "Bird": 3,
+        "Dawn": 3
+      },
+      "avgPriceEth": 0.0005331633953358317
+    }
+  ]
+}

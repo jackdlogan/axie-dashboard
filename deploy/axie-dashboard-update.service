@@ -1,0 +1,16 @@
+[Unit]
+Description=Axie dashboard hourly data update (incremental ingest + refresh + export)
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=oneshot
+# --- adjust these three to your server ---
+User=deploy
+WorkingDirectory=/opt/axie-dashboard
+ExecStart=/usr/bin/node /opt/axie-dashboard/scripts/update.mjs
+# The SKYMAVIS_API_KEY is read from /opt/axie-dashboard/.env by the Node
+# scripts (keep that file chmod 600). No key is placed in this unit.
+Nice=10
+# Don't let a stuck run pile up; the script also self-guards with a lockfile.
+TimeoutStartSec=3600
