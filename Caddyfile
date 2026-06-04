@@ -1,0 +1,10 @@
+# Automatic HTTPS for your domain, reverse-proxied to the web container.
+# DOMAIN and ACME_EMAIL come from .env (compose passes them into this container).
+{
+	email {$ACME_EMAIL}
+}
+
+{$DOMAIN} {
+	encode zstd gzip
+	reverse_proxy web:8080
+}

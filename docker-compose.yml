@@ -1,0 +1,50 @@
+# Axie dashboard — production stack.
+#   web     : serves the SPA + injects the Sky Mavis API key (server.mjs)
+#   refresh : runs the Dune ingest + enrich hourly, writing JSON to the shared volume
+#   caddy   : reverse proxy with automatic HTTPS for $DOMAIN
+#
+# Setup: copy .env.example -> .env, fill keys + DOMAIN + ACME_EMAIL, then:
+#   docker compose up -d --build
+
+services:
+  web:
+    build: .
+    image: axie-dashboard:latest
+    restart: unless-stopped
+    env_file: .env
+    environment:
+      PORT: 8080
+    volumes:
+      - dashboard-public:/app/public # live JSON written by `refresh`
+    expose:
+      - "8080"
+
+  refresh:
+    image: axie-dashboard:latest # reuse the image built by `web`
+    depends_on:
+      - web
+    restart: unless-stopped
+    env_file: .env
+    # Run once on start, then hourly. update.mjs self-guards with a lockfile.
+    command: ["sh", "-c", "while true; do node scripts/update.mjs || true; sleep 3600; done"]
+    volumes:
+      - dashboard-public:/app/public # shares the JSON with `web`
+      - dashboard-data:/app/data # persists the DuckDB warehouse
+
+  caddy:
+    image: caddy:2
+    restart: unless-stopped
+    env_file: .env
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./Caddyfile:/etc/caddy/Caddyfile:ro
+      - caddy-data:/data # cert/key persistence — keep this volume!
+      - caddy-config:/config
+
+volumes:
+  dashboard-public:
+  dashboard-data:
+  caddy-data:
+  caddy-config:
