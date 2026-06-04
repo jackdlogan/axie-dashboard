@@ -216,6 +216,8 @@ export default function CollectibleCollections({ tokensStats, ethUsd }) {
               border: '1px solid #20222b',
               borderRadius: 8,
             }}
+            labelStyle={{ color: '#f4f5f7', fontWeight: 600 }}
+            itemStyle={{ color: '#9aa0ae' }}
             formatter={(v) => [chartFmt(metric, v), metricLabel]}
           />
           <Bar dataKey={metric} radius={[0, 4, 4, 0]}>

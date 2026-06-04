@@ -57,7 +57,16 @@ export default function DuneTopSales() {
                   <a className="axie-cell"
                      href={`https://app.axieinfinity.com/marketplace/axies/${s.token_id}/`}
                      target="_blank" rel="noreferrer">
-                    {s.image && <img src={s.image} alt="" loading="lazy" />}
+                    {s.image && (
+                      <img
+                        src={s.image.replace('assets.axieinfinity.com', 'axiecdn.axieinfinity.com')}
+                        alt=""
+                        loading="lazy"
+                        onError={(e) => {
+                          e.currentTarget.style.visibility = 'hidden'
+                        }}
+                      />
+                    )}
                     <span>{s.name || `Axie #${s.token_id}`}</span>
                   </a>
                 </td>
