@@ -11,9 +11,9 @@ import {
 import { usd, num, compactUsd, compactNum } from '../format.js'
 
 const METRICS = [
-  { id: 'volumeUsd', label: 'Volume (USD)', color: '#5b8cff' },
-  { id: 'count', label: 'Sales', color: '#2dd4a7' },
-  { id: 'avgPriceEth', label: 'Avg price (ETH)', color: '#ffb800' },
+  { id: 'volumeUsd', label: 'Volume (USD)', color: '#4e6bff' },
+  { id: 'count', label: 'Sales', color: '#8aa0ff' },
+  { id: 'avgPriceEth', label: 'Avg price (ETH)', color: '#34d399' },
 ]
 
 function fmtAxis(metric, v) {
@@ -117,16 +117,16 @@ export default function HistoryChart() {
               <stop offset="100%" stopColor={active.color} stopOpacity={0} />
             </linearGradient>
           </defs>
-          <CartesianGrid strokeDasharray="3 3" stroke="#2a2f45" vertical={false} />
+          <CartesianGrid strokeDasharray="3 3" stroke="#20222b" vertical={false} />
           <XAxis
             dataKey="date"
-            stroke="#8a90a6"
+            stroke="#6b7180"
             tickLine={false}
             minTickGap={28}
             tickFormatter={(d) => d.slice(5)} /* MM-DD */
           />
           <YAxis
-            stroke="#8a90a6"
+            stroke="#6b7180"
             tickLine={false}
             width={64}
             tickFormatter={(v) => fmtAxis(metric, v)}

@@ -20,6 +20,13 @@ const usdFmtPrecise = new Intl.NumberFormat('en-US', {
   maximumFractionDigits: 2,
 })
 
+const usdFmt4 = new Intl.NumberFormat('en-US', {
+  style: 'currency',
+  currency: 'USD',
+  minimumFractionDigits: 4,
+  maximumFractionDigits: 4,
+})
+
 const compactFmt = new Intl.NumberFormat('en-US', {
   notation: 'compact',
   maximumFractionDigits: 2,
@@ -27,6 +34,7 @@ const compactFmt = new Intl.NumberFormat('en-US', {
 
 export const usd = (n) => usdFmt.format(Number(n) || 0)
 export const usdPrecise = (n) => usdFmtPrecise.format(Number(n) || 0)
+export const usd4 = (n) => usdFmt4.format(Number(n) || 0)
 export const compactUsd = (n) =>
   '$' + compactFmt.format(Number(n) || 0)
 export const compactNum = (n) => compactFmt.format(Number(n) || 0)

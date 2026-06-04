@@ -5,8 +5,12 @@ import KpiCard from './components/KpiCard.jsx'
 import ActivityChart from './components/ActivityChart.jsx'
 import TxChart from './components/TxChart.jsx'
 import CollectionsTable from './components/CollectionsTable.jsx'
+import CollectibleCollections from './components/CollectibleCollections.jsx'
+import CollectiblePriceTrends from './components/CollectiblePriceTrends.jsx'
 import DuneTrends from './components/DuneTrends.jsx'
 import DuneTopSales from './components/DuneTopSales.jsx'
+import MarketMomentum from './components/MarketMomentum.jsx'
+import TopBuyers from './components/TopBuyers.jsx'
 import RatesBar from './components/RatesBar.jsx'
 
 export default function App() {
@@ -134,6 +138,8 @@ export default function App() {
         <TxChart data={periodData} />
       </section>
 
+      <MarketMomentum />
+
       <DuneTrends />
 
       <CollectionsTable
@@ -141,7 +147,16 @@ export default function App() {
         ethUsd={Number(data.exchangeRate?.eth?.usd) || 0}
       />
 
+      <CollectibleCollections
+        tokensStats={data.tokensStats}
+        ethUsd={Number(data.exchangeRate?.eth?.usd) || 0}
+      />
+
+      <CollectiblePriceTrends />
+
       <DuneTopSales />
+
+      <TopBuyers />
 
       <footer className="app-footer">
         Data via Sky Mavis GraphQL API · prices in wei converted to ETH/USD ·

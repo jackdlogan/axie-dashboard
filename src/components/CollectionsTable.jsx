@@ -1,5 +1,5 @@
 import { useMemo, useState } from 'react'
-import { usd, num, compactNum } from '../format.js'
+import { usd, usd4, compactNum } from '../format.js'
 
 // Maps tokensStats field keys -> human labels. Order = default display order.
 const COLLECTIONS = [
@@ -13,13 +13,29 @@ const COLLECTIONS = [
   ['xmasAxie', 'Christmas Axie'],
   ['meoAxie', 'MEO Axie'],
   ['land', 'Land'],
-  ['landItems', 'Land Items'],
-  ['accessories', 'Accessories'],
-  ['runes', 'Runes'],
-  ['charms', 'Charms'],
   ['materials', 'Materials'],
   ['consumables', 'Consumables'],
 ]
+
+// Collection badge icons from the Axie marketplace CDN. Most live under
+// /badge/<slug>.png; Nightmare uses a different /icon-nightmare.png path.
+// Collections not listed here (base Axie, Land, Materials, Consumables) have no
+// badge and fall back to a neutral placeholder.
+const ICON_BASE = 'https://cdn.axieinfinity.com/marketplace-website/asset-icon'
+const COLLECTION_ICONS = {
+  axie: `${ICON_BASE}/axie-tab-icon.png`,
+  originAxie: `${ICON_BASE}/badge/origin.png`,
+  mysticAxie: `${ICON_BASE}/badge/mystic.png`,
+  shinyAxie: `${ICON_BASE}/badge/shiny.png`,
+  japanAxie: `${ICON_BASE}/badge/japan.png`,
+  summerAxie: `${ICON_BASE}/badge/summer.png`,
+  nightmareAxie: `${ICON_BASE}/icon-nightmare.png`,
+  xmasAxie: `${ICON_BASE}/badge/xmas.png`,
+  meoAxie: `${ICON_BASE}/badge/meo.png`,
+  land: `${ICON_BASE}/land-tab-icon.png`,
+  materials: `${ICON_BASE}/material-tab-icon.png`,
+  consumables: 'https://cdn.axieinfinity.com/marketplace-website/consumables/consumables.png',
+}
 
 const COLUMNS = [
   { key: 'name', label: 'Collection', align: 'left' },
@@ -103,9 +119,26 @@ export default function CollectionsTable({ tokensStats, ethUsd }) {
         <tbody>
           {sorted.map((r) => (
             <tr key={r.key}>
-              <td>{r.name}</td>
+              <td>
+                <span className="coll-cell">
+                  {COLLECTION_ICONS[r.key] ? (
+                    <img
+                      className="coll-icon"
+                      src={COLLECTION_ICONS[r.key]}
+                      alt=""
+                      loading="lazy"
+                      onError={(e) => {
+                        e.currentTarget.style.visibility = 'hidden'
+                      }}
+                    />
+                  ) : (
+                    <span className="coll-icon coll-icon--none" />
+                  )}
+                  <span>{r.name}</span>
+                </span>
+              </td>
               <td className="num">{fmtEth(r.floorEth)}</td>
-              <td className="num">{r.floorUsd ? usd(r.floorUsd) : '—'}</td>
+              <td className="num">{r.floorUsd ? usd4(r.floorUsd) : '—'}</td>
               <td className="num">{compactNum(r.holders)}</td>
               <td className="num">{fmtEth(r.volEth)}</td>
               <td className="num strong">{r.volUsd ? usd(r.volUsd) : '—'}</td>

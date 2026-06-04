@@ -1,12 +1,19 @@
 :root {
-  --bg: #0e1018;
-  --bg-panel: #161a27;
-  --bg-panel-2: #1c2133;
-  --border: #262c40;
-  --text: #e6e9f2;
-  --muted: #8a90a6;
-  --accent: #5b8cff;
-  --accent-2: #2dd4a7;
+  /* Dark editorial system — inky ground × cobalt (ported from the Paper redesign) */
+  --bg: #0b0c10;
+  --bg-panel: #0f1117;
+  --bg-panel-2: #161922;
+  --border: #20222b;
+  --border-soft: #181a22;
+  --text: #f4f5f7;
+  --muted: #9aa0ae;
+  --faint: #6b7180;
+  --accent: #4e6bff;
+  --accent-2: #34d399;
+  --neg: #f87171;
+  --font-display: 'Archivo', sans-serif;
+  --font-body: 'Inter', sans-serif;
+  --font-mono: 'Geist Mono', ui-monospace, monospace;
 }
 
 * {
@@ -17,8 +24,7 @@ body {
   margin: 0;
   background: var(--bg);
   color: var(--text);
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial,
-    sans-serif;
+  font-family: var(--font-body);
   -webkit-font-smoothing: antialiased;
 }
 
@@ -39,12 +45,14 @@ body {
 
 .app-header h1 {
   margin: 0;
-  font-size: 26px;
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: 30px;
   letter-spacing: -0.02em;
 }
 
 .subtitle {
-  margin: 4px 0 0;
+  margin: 6px 0 0;
   color: var(--muted);
   font-size: 14px;
 }
@@ -78,24 +86,32 @@ body {
 .rates-bar {
   display: flex;
   align-items: center;
-  gap: 14px;
+  gap: 22px;
   flex-wrap: wrap;
-  background: var(--bg-panel);
-  border: 1px solid var(--border);
-  border-radius: 10px;
-  padding: 10px 16px;
-  margin-bottom: 22px;
-  font-size: 13px;
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+  padding: 14px 2px;
+  margin-bottom: 26px;
+  font-size: 14px;
+  font-variant-numeric: tabular-nums;
 }
 .rates-label {
-  color: var(--muted);
+  color: var(--faint);
   text-transform: uppercase;
-  letter-spacing: 0.06em;
+  letter-spacing: 0.09em;
   font-size: 11px;
+  font-weight: 600;
+}
+.rate-chip {
+  font-weight: 600;
 }
 .rate-chip strong {
-  color: var(--accent);
-  margin-right: 4px;
+  color: var(--faint);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.09em;
+  font-size: 11px;
+  margin-right: 6px;
 }
 
 /* KPI grid */
@@ -108,26 +124,29 @@ body {
 .kpi-card {
   background: var(--bg-panel);
   border: 1px solid var(--border);
-  border-top: 3px solid var(--accent);
   border-radius: 12px;
-  padding: 16px 18px;
+  padding: 18px 18px 16px;
 }
 .kpi-label {
-  color: var(--muted);
-  font-size: 12px;
+  color: var(--faint);
+  font-size: 11px;
+  font-weight: 600;
   text-transform: uppercase;
-  letter-spacing: 0.05em;
+  letter-spacing: 0.09em;
 }
 .kpi-value {
-  font-size: 26px;
+  font-family: var(--font-display);
+  font-size: 34px;
   font-weight: 700;
-  margin-top: 6px;
-  letter-spacing: -0.02em;
+  margin-top: 10px;
+  letter-spacing: -0.025em;
+  font-variant-numeric: tabular-nums;
 }
 .kpi-sub {
   color: var(--muted);
   font-size: 13px;
-  margin-top: 4px;
+  margin-top: 6px;
+  font-variant-numeric: tabular-nums;
 }
 
 /* Charts */
@@ -149,10 +168,17 @@ body {
   border-radius: 12px;
   padding: 18px 20px;
 }
+/* Vertical rhythm for full-width panels stacked directly in the page.
+   Panels inside a grid (.chart-grid) get their spacing from the grid gap. */
+.app > .panel {
+  margin-bottom: 24px;
+}
 .panel h2 {
   margin: 0 0 14px;
-  font-size: 16px;
-  font-weight: 600;
+  font-family: var(--font-display);
+  font-size: 19px;
+  font-weight: 700;
+  letter-spacing: -0.01em;
 }
 .panel-head {
   display: flex;
@@ -218,17 +244,17 @@ body {
 }
 .sales-table th {
   text-align: left;
-  color: var(--muted);
+  color: var(--faint);
   font-weight: 600;
-  font-size: 12px;
+  font-size: 11px;
   text-transform: uppercase;
-  letter-spacing: 0.04em;
-  padding: 8px 10px;
+  letter-spacing: 0.09em;
+  padding: 8px 10px 12px;
   border-bottom: 1px solid var(--border);
 }
 .sales-table td {
-  padding: 10px;
-  border-bottom: 1px solid #1d2233;
+  padding: 12px 10px;
+  border-bottom: 1px solid var(--border-soft);
 }
 .sales-table tr:hover td {
   background: #ffffff06;
@@ -244,9 +270,21 @@ body {
 .sales-table th.sortable:hover {
   color: var(--text);
 }
+.sales-table th.derived-col {
+  color: var(--accent);
+}
+.floor-live {
+  color: var(--accent-2);
+  font-size: 11px;
+  font-weight: 600;
+}
+.floor-cached {
+  font-size: 11px;
+}
 .sales-table .rank {
-  color: var(--muted);
+  color: var(--faint);
   width: 32px;
+  font-variant-numeric: tabular-nums;
 }
 .sales-table .strong {
   font-weight: 700;
@@ -276,6 +314,82 @@ body {
   font-weight: 600;
 }
 
+/* Chart legend (clickable toggles) */
+.legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+.legend-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  background: var(--bg-panel-2);
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  padding: 5px 12px;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--text);
+  cursor: pointer;
+  transition: opacity 0.12s;
+}
+.legend-dot {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+/* Collection name cell with badge icon */
+.coll-cell {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.coll-icon {
+  width: 22px;
+  height: 22px;
+  flex-shrink: 0;
+  object-fit: contain;
+}
+.coll-icon--none {
+  border-radius: 6px;
+  background: var(--bg-panel-2);
+}
+
+/* Market momentum */
+.mom-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 14px;
+}
+.mom-card {
+  background: var(--bg-panel-2);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 14px 16px;
+}
+.mom-value {
+  font-family: var(--font-display);
+  font-size: 26px;
+  font-weight: 700;
+  margin: 8px 0 6px;
+  letter-spacing: -0.02em;
+  font-variant-numeric: tabular-nums;
+}
+.mom-delta {
+  font-size: 13px;
+  font-weight: 600;
+}
+.mom-delta.up {
+  color: var(--accent-2);
+}
+.mom-delta.down {
+  color: var(--neg);
+}
+
 /* States & misc */
 .muted {
   color: var(--muted);
@@ -288,7 +402,7 @@ body {
   padding: 24px;
 }
 .error-inline {
-  color: #ff6b6b;
+  color: var(--neg);
 }
 .loading-screen,
 .error-screen {
