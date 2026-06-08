@@ -7,6 +7,13 @@ const COLLECTIBLE_COLORS = {
   Summer: '#ffb800', Nightmare: '#8a90a6', Christmas: '#6abe30', MEO: '#ff8fc7',
 }
 
+// The Axie render URL is deterministic from the token id — the same URL the
+// Sky Mavis `image` field returns. Building it directly means thumbnails don't
+// depend on the enrich step having run, so a freshly-entered top sale still
+// shows art even before its metadata is cached.
+const axieImg = (tokenId) =>
+  `https://assets.axieinfinity.com/axies/${tokenId}/axie/axie-full-transparent.png`
+
 export default function DuneTopSales() {
   const [sales, setSales] = useState(null)
   const [error, setError] = useState(null)
@@ -57,7 +64,14 @@ export default function DuneTopSales() {
                   <a className="axie-cell"
                      href={`https://app.axieinfinity.com/marketplace/axies/${s.token_id}/`}
                      target="_blank" rel="noreferrer">
-                    {s.image && <img src={s.image} alt="" loading="lazy" />}
+                    {s.token_id && (
+                      <img
+                        src={s.image || axieImg(s.token_id)}
+                        alt=""
+                        loading="lazy"
+                        onError={(e) => { e.currentTarget.style.visibility = 'hidden' }}
+                      />
+                    )}
                     <span>{s.name || `Axie #${s.token_id}`}</span>
                   </a>
                 </td>
