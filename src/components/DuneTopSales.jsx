@@ -7,12 +7,13 @@ const COLLECTIBLE_COLORS = {
   Summer: '#ffb800', Nightmare: '#8a90a6', Christmas: '#6abe30', MEO: '#ff8fc7',
 }
 
-// The Axie render URL is deterministic from the token id — the same URL the
-// Sky Mavis `image` field returns. Building it directly means thumbnails don't
-// depend on the enrich step having run, so a freshly-entered top sale still
-// shows art even before its metadata is cached.
+// The Axie render URL is deterministic from the token id. NOTE: the Sky Mavis
+// `image` field points at assets.axieinfinity.com, which now returns 403 (private
+// S3) and won't load in-browser — axiecdn.axieinfinity.com is the public CDN that
+// actually serves the art. Building this directly also means thumbnails don't
+// depend on the enrich step, so a freshly-entered top sale shows art immediately.
 const axieImg = (tokenId) =>
-  `https://assets.axieinfinity.com/axies/${tokenId}/axie/axie-full-transparent.png`
+  `https://axiecdn.axieinfinity.com/axies/${tokenId}/axie/axie-full-transparent.png`
 
 export default function DuneTopSales() {
   const [sales, setSales] = useState(null)
@@ -66,7 +67,7 @@ export default function DuneTopSales() {
                      target="_blank" rel="noreferrer">
                     {s.token_id && (
                       <img
-                        src={s.image || axieImg(s.token_id)}
+                        src={axieImg(s.token_id)}
                         alt=""
                         loading="lazy"
                         onError={(e) => { e.currentTarget.style.visibility = 'hidden' }}
