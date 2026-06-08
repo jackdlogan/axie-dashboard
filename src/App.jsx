@@ -7,6 +7,7 @@ import TxChart from './components/TxChart.jsx'
 import CollectionsTable from './components/CollectionsTable.jsx'
 import CollectibleCollections from './components/CollectibleCollections.jsx'
 import CollectiblePriceTrends from './components/CollectiblePriceTrends.jsx'
+import CollectibleHolderTrends from './components/CollectibleHolderTrends.jsx'
 import DuneTrends from './components/DuneTrends.jsx'
 import DuneTopSales from './components/DuneTopSales.jsx'
 import MarketMomentum from './components/MarketMomentum.jsx'
@@ -94,6 +95,8 @@ export default function App() {
 
       <RatesBar rates={data.exchangeRate} />
 
+      <MarketMomentum />
+
       <section className="kpi-grid">
         <KpiCard
           label="Volume · 24h"
@@ -138,8 +141,6 @@ export default function App() {
         <TxChart data={periodData} />
       </section>
 
-      <MarketMomentum />
-
       <DuneTrends />
 
       <CollectionsTable
@@ -153,6 +154,8 @@ export default function App() {
       />
 
       <CollectiblePriceTrends />
+
+      <CollectibleHolderTrends tokensStats={data.tokensStats} />
 
       <DuneTopSales />
 

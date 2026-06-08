@@ -71,13 +71,31 @@ CREATE TABLE IF NOT EXISTS axie_meta (
 -- Migrate older warehouses that predate the collectible column.
 ALTER TABLE axie_meta ADD COLUMN IF NOT EXISTS collectible VARCHAR;
 
--- Daily median settle price (USD) per collectible collection, from Dune.
+-- Daily median settle price per collectible collection, from Dune.
 -- Long format: one row per (day, collection). Powers the price-over-time chart.
+-- median_weth is the ETH-equivalent median (price_usd ÷ ETH/USD at the trade
+-- minute), so the series isn't distorted by the ETH/USD rate moving.
 CREATE TABLE IF NOT EXISTS dune_collectible_daily (
+  day         DATE    NOT NULL,
+  collection  VARCHAR NOT NULL,  -- Origin | Mystic | Shiny | Japanese | Summer | Nightmare | Christmas | MEO
+  sales       BIGINT,
+  median_usd  DOUBLE,
+  median_weth DOUBLE,
+  PRIMARY KEY (day, collection)
+);
+-- Migrate older warehouses that predate the WETH-denominated median.
+ALTER TABLE dune_collectible_daily ADD COLUMN IF NOT EXISTS median_weth DOUBLE;
+
+-- Daily distinct-holder count per collectible collection, from Dune.
+-- Long format: one row per (day, collection). Reconstructed from ERC-721
+-- Transfer events joined to the token→collection seed — a holder on day D is a
+-- distinct address owning >=1 token of that collection as of D. Unlike the price
+-- series (a per-day flow), holders is a *stock* that carries across quiet days;
+-- the ingest forward-fills gaps when exporting. Powers the holders-over-time chart.
+CREATE TABLE IF NOT EXISTS dune_collectible_holders_daily (
   day        DATE    NOT NULL,
   collection VARCHAR NOT NULL,  -- Origin | Mystic | Shiny | Japanese | Summer | Nightmare | Christmas | MEO
-  sales      BIGINT,
-  median_usd DOUBLE,
+  holders    BIGINT,
   PRIMARY KEY (day, collection)
 );
 

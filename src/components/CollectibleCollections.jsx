@@ -9,7 +9,7 @@ import {
   Tooltip,
   CartesianGrid,
 } from 'recharts'
-import { usd, compactUsd, num, compactNum } from '../format.js'
+import { usd, compactUsd, eth, compactEth, num, compactNum } from '../format.js'
 import { fetchCollectibleFloors } from '../api.js'
 
 // The special "collectible" collections only — excludes the base Axie pool and
@@ -28,45 +28,39 @@ const COLLECTIBLES = [
   ['meoAxie', 'MEO', '#ff8fc7', 'meo'],
 ]
 
+// Metric ids are currency-agnostic; the active currency picks the Eth/Usd field.
 const CHART_METRICS = [
-  { id: 'marketCapUsd', label: 'Market cap' },
-  { id: 'floorUsd', label: 'Floor' },
-  { id: 'volUsd', label: '24h Vol' },
+  { id: 'marketCap', label: 'Market cap' },
+  { id: 'floor', label: 'Floor' },
+  { id: 'vol', label: '24h Vol' },
   { id: 'holders', label: 'Holders' },
   { id: 'supply', label: 'Supply' },
 ]
 
+// Which metrics are priced in a currency (and so switch with the WETH/USD toggle).
+const PRICED = new Set(['marketCap', 'floor', 'vol'])
+
 // Columns for the derived-metrics table. `derived` marks the analytics that the
-// existing Collection Analytics table doesn't already show.
+// existing Collection Analytics table doesn't already show. `priced` columns
+// flip between WETH and USD with the toggle.
 const COLUMNS = [
   { key: 'label', label: 'Collection', align: 'left' },
-  { key: 'floorUsd', label: 'Floor (USD)', align: 'right' },
-  { key: 'marketCapUsd', label: 'Market cap', align: 'right', derived: true },
+  { key: 'floor', label: 'Floor', align: 'right', priced: true },
+  { key: 'marketCap', label: 'Market cap', align: 'right', priced: true, derived: true },
   { key: 'supply', label: 'Supply', align: 'right' },
   { key: 'holders', label: 'Holders', align: 'right' },
   { key: 'avgHolding', label: 'Avg / holder', align: 'right', derived: true },
-  { key: 'volUsd', label: '24h Vol', align: 'right' },
+  { key: 'vol', label: '24h Vol', align: 'right', priced: true },
   { key: 'turnoverPct', label: 'Turnover', align: 'right', derived: true },
 ]
 
-const isUsd = (k) => k === 'floorUsd' || k === 'marketCapUsd' || k === 'volUsd'
-
-function fmtCell(key, v) {
-  if (v == null || (typeof v === 'number' && !Number.isFinite(v))) return '—'
-  if (key === 'turnoverPct') return v ? v.toFixed(2) + '%' : '—'
-  if (key === 'avgHolding') return v ? v.toFixed(1) : '—'
-  if (isUsd(key)) return v ? usd(v) : '—'
-  if (key === 'label') return v
-  return v ? num(v) : '—'
-}
-
-function chartFmt(metric, v) {
-  return isUsd(metric) ? compactUsd(v) : compactNum(v)
-}
+// Resolve a metric/column id to the actual row field for the active currency.
+const field = (key, cur) => (PRICED.has(key) ? key + (cur === 'eth' ? 'Eth' : 'Usd') : key)
 
 export default function CollectibleCollections({ tokensStats, ethUsd }) {
-  const [metric, setMetric] = useState('marketCapUsd')
-  const [sort, setSort] = useState({ key: 'marketCapUsd', dir: 'desc' })
+  const [cur, setCur] = useState('eth') // 'eth' (WETH) | 'usd'
+  const [metric, setMetric] = useState('marketCap')
+  const [sort, setSort] = useState({ key: 'marketCap', dir: 'desc' })
   // Live order-book floors for the addressable collections; null until loaded,
   // and a failed fetch simply leaves every collection on its cached floor.
   const [liveFloors, setLiveFloors] = useState(null)
@@ -81,6 +75,11 @@ export default function CollectibleCollections({ tokensStats, ethUsd }) {
     }
   }, [])
 
+  // Money formatters bound to the active currency. `compact` for axes/totals,
+  // full for table cells.
+  const money = (v) => (cur === 'eth' ? eth(v) : usd(v))
+  const moneyCompact = (v) => (cur === 'eth' ? compactEth(v) : compactUsd(v))
+
   const rows = useMemo(() => {
     if (!tokensStats) return []
     return COLLECTIBLES.map(([key, label, color, liveKey]) => {
@@ -92,54 +91,58 @@ export default function CollectibleCollections({ tokensStats, ethUsd }) {
       const volEth = parseFloat(s.last24HVolume) || 0
       const supply = Number(s.totalSupply) || 0
       const holders = Number(s.holders) || 0
-      const floorUsd = floorEth * ethUsd
-      const volUsd = volEth * ethUsd
-      const marketCapUsd = floorUsd * supply
+      const marketCapEth = floorEth * supply
+      // turnover is a ratio (vol/market cap) — identical in either currency.
+      const turnoverPct = marketCapEth ? (volEth / marketCapEth) * 100 : null
       return {
         key,
         label,
         color,
-        floorEth,
-        floorUsd,
         floorLive,
         addressable: !!liveKey,
-        volUsd,
+        floorEth,
+        floorUsd: floorEth * ethUsd,
+        volEth,
+        volUsd: volEth * ethUsd,
+        marketCapEth,
+        marketCapUsd: marketCapEth * ethUsd,
         supply,
         holders,
-        marketCapUsd,
         avgHolding: holders ? supply / holders : null,
-        turnoverPct: marketCapUsd ? (volUsd / marketCapUsd) * 100 : null,
+        turnoverPct,
       }
     })
   }, [tokensStats, ethUsd, liveFloors])
 
-  const hasData = rows.some((r) => r.marketCapUsd > 0)
+  const hasData = rows.some((r) => r.marketCapEth > 0)
 
   const totals = useMemo(
     () => ({
-      marketCap: rows.reduce((a, r) => a + (r.marketCapUsd || 0), 0),
-      vol: rows.reduce((a, r) => a + (r.volUsd || 0), 0),
-      count: rows.filter((r) => r.marketCapUsd > 0).length,
+      marketCap: rows.reduce((a, r) => a + (r[field('marketCap', cur)] || 0), 0),
+      vol: rows.reduce((a, r) => a + (r[field('vol', cur)] || 0), 0),
+      count: rows.filter((r) => r.marketCapEth > 0).length,
     }),
-    [rows]
+    [rows, cur]
   )
 
+  const metricField = field(metric, cur)
   const chartData = useMemo(
-    () => [...rows].sort((a, b) => (b[metric] || 0) - (a[metric] || 0)),
-    [rows, metric]
+    () => [...rows].sort((a, b) => (b[metricField] || 0) - (a[metricField] || 0)),
+    [rows, metricField]
   )
 
   const tableRows = useMemo(() => {
+    const sortField = field(sort.key, cur)
     const r = [...rows]
     r.sort((a, b) => {
-      const av = a[sort.key]
-      const bv = b[sort.key]
+      const av = a[sortField]
+      const bv = b[sortField]
       if (typeof av === 'string') return sort.dir === 'asc' ? av.localeCompare(bv) : bv.localeCompare(av)
       const cmp = (av ?? -Infinity) - (bv ?? -Infinity)
       return sort.dir === 'asc' ? cmp : -cmp
     })
     return r
-  }, [rows, sort])
+  }, [rows, sort, cur])
 
   function toggleSort(key) {
     setSort((s) =>
@@ -147,6 +150,19 @@ export default function CollectibleCollections({ tokensStats, ethUsd }) {
         ? { key, dir: s.dir === 'asc' ? 'desc' : 'asc' }
         : { key, dir: key === 'label' ? 'asc' : 'desc' }
     )
+  }
+
+  function fmtCell(key, v) {
+    if (v == null || (typeof v === 'number' && !Number.isFinite(v))) return '—'
+    if (key === 'turnoverPct') return v ? v.toFixed(2) + '%' : '—'
+    if (key === 'avgHolding') return v ? v.toFixed(1) : '—'
+    if (key === 'label') return v
+    if (PRICED.has(key)) return v ? money(v) : '—'
+    return v ? num(v) : '—'
+  }
+
+  function chartFmt(v) {
+    return PRICED.has(metric) ? moneyCompact(v) : compactNum(v)
   }
 
   if (!hasData) {
@@ -159,33 +175,44 @@ export default function CollectibleCollections({ tokensStats, ethUsd }) {
   }
 
   const metricLabel = CHART_METRICS.find((m) => m.id === metric)?.label
+  const unitLabel = cur === 'eth' ? 'WETH' : 'USD'
 
   return (
     <div className="panel">
       <div className="panel-head">
         <h2>Collectible Axies — Deep Dive</h2>
-        <div className="seg">
-          {CHART_METRICS.map((m) => (
-            <button
-              key={m.id}
-              className={m.id === metric ? 'seg-btn active' : 'seg-btn'}
-              onClick={() => setMetric(m.id)}
-            >
-              {m.label}
+        <div className="seg-row">
+          <div className="seg">
+            <button className={cur === 'eth' ? 'seg-btn active' : 'seg-btn'} onClick={() => setCur('eth')}>
+              WETH
             </button>
-          ))}
+            <button className={cur === 'usd' ? 'seg-btn active' : 'seg-btn'} onClick={() => setCur('usd')}>
+              USD
+            </button>
+          </div>
+          <div className="seg">
+            {CHART_METRICS.map((m) => (
+              <button
+                key={m.id}
+                className={m.id === metric ? 'seg-btn active' : 'seg-btn'}
+                onClick={() => setMetric(m.id)}
+              >
+                {m.label}
+              </button>
+            ))}
+          </div>
         </div>
       </div>
 
       <div className="history-totals">
         <span>
-          <strong>{compactUsd(totals.marketCap)}</strong> floor-implied market cap
+          <strong>{moneyCompact(totals.marketCap)}</strong> floor-implied market cap
         </span>
         <span>
-          <strong>{compactUsd(totals.vol)}</strong> 24h volume
+          <strong>{moneyCompact(totals.vol)}</strong> 24h volume
         </span>
         <span className="muted small">
-          {totals.count} special collections · floor × supply · live via Sky Mavis
+          {totals.count} special collections · floor × supply · priced in {unitLabel} · live via Sky Mavis
         </span>
       </div>
 
@@ -200,7 +227,7 @@ export default function CollectibleCollections({ tokensStats, ethUsd }) {
             type="number"
             stroke="#6b7180"
             tickLine={false}
-            tickFormatter={(v) => chartFmt(metric, v)}
+            tickFormatter={chartFmt}
           />
           <YAxis
             type="category"
@@ -216,9 +243,9 @@ export default function CollectibleCollections({ tokensStats, ethUsd }) {
               border: '1px solid #20222b',
               borderRadius: 8,
             }}
-            formatter={(v) => [chartFmt(metric, v), metricLabel]}
+            formatter={(v) => [chartFmt(v), metricLabel]}
           />
-          <Bar dataKey={metric} radius={[0, 4, 4, 0]}>
+          <Bar dataKey={metricField} radius={[0, 4, 4, 0]}>
             {chartData.map((r) => (
               <Cell key={r.key} fill={r.color} />
             ))}
@@ -239,6 +266,7 @@ export default function CollectibleCollections({ tokensStats, ethUsd }) {
                 title={c.derived ? 'Derived analytic' : undefined}
               >
                 {c.label}
+                {c.priced ? ` (${unitLabel})` : ''}
                 {c.derived ? ' *' : ''}
                 {sort.key === c.key && (sort.dir === 'asc' ? ' ▲' : ' ▼')}
               </th>
@@ -254,7 +282,7 @@ export default function CollectibleCollections({ tokensStats, ethUsd }) {
                 </span>
               </td>
               <td className="num">
-                {fmtCell('floorUsd', r.floorUsd)}
+                {fmtCell('floor', r[field('floor', cur)])}
                 {r.floorLive ? (
                   <span className="floor-live" title="Live order-book floor (cheapest active listing)">
                     {' '}live
@@ -265,20 +293,22 @@ export default function CollectibleCollections({ tokensStats, ethUsd }) {
                   </span>
                 )}
               </td>
-              <td className="num strong">{fmtCell('marketCapUsd', r.marketCapUsd)}</td>
+              <td className="num strong">{fmtCell('marketCap', r[field('marketCap', cur)])}</td>
               <td className="num">{fmtCell('supply', r.supply)}</td>
               <td className="num">{fmtCell('holders', r.holders)}</td>
               <td className="num">{fmtCell('avgHolding', r.avgHolding)}</td>
-              <td className="num">{fmtCell('volUsd', r.volUsd)}</td>
+              <td className="num">{fmtCell('vol', r[field('vol', cur)])}</td>
               <td className="num">{fmtCell('turnoverPct', r.turnoverPct)}</td>
             </tr>
           ))}
         </tbody>
       </table>
       <p className="muted small">
-        Floor: <span className="floor-live">live</span> = cheapest active listing (all collections,
-        via the search API); <span className="floor-cached">~</span> = cached tokensStats fallback,
-        used only if a live floor is unavailable.
+        Values in <strong>{unitLabel}</strong> (Ronin WETH is the native settlement token; the USD
+        toggle multiplies by the live ETH rate). Floor: <span className="floor-live">live</span> =
+        cheapest active listing (all collections, via the search API);{' '}
+        <span className="floor-cached">~</span> = cached tokensStats fallback, used only if a live
+        floor is unavailable.
         <br />
         <strong>*</strong> derived: market cap = floor × supply · avg/holder = supply ÷ holders ·
         turnover = 24h volume ÷ market cap.
