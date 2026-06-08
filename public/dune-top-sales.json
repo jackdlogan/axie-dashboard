@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-06-08T06:18:01.021Z",
+  "generatedAt": "2026-06-08T10:18:17.612Z",
   "sales": [
     {
       "tx_hash": "0xfbf129f388c04a0e14c9239edaa1468f48993b329e8bda197de451a1edb522e8",
@@ -9,10 +9,10 @@
       "currency": "WETH",
       "price": 1.8,
       "price_usd": 2936.538,
-      "name": null,
-      "cls": null,
-      "image": null,
-      "collectible": null
+      "name": "My dream Mystic",
+      "cls": "Aquatic",
+      "image": "https://assets.axieinfinity.com/axies/2132/axie/axie-full-transparent.png",
+      "collectible": "Mystic"
     },
     {
       "tx_hash": "0x2c2f1dfdddcc13173fbfa8543b689290eb052a26e3f1ca0e954284c48af2e9c1",
@@ -35,10 +35,10 @@
       "currency": "WETH",
       "price": 1.6,
       "price_usd": 2589.232,
-      "name": null,
-      "cls": null,
-      "image": null,
-      "collectible": null
+      "name": "YEYE 🔥",
+      "cls": "Beast",
+      "image": "https://assets.axieinfinity.com/axies/2233/axie/axie-full-transparent.png",
+      "collectible": "Mystic"
     },
     {
       "tx_hash": "0x9916c4f8f807dff0756d1501788de5404dd5b7a6f50d783f627ca39bf4b095a3",
@@ -61,10 +61,10 @@
       "currency": "WETH",
       "price": 1.6,
       "price_usd": 2508.2400000000002,
-      "name": null,
-      "cls": null,
-      "image": null,
-      "collectible": null
+      "name": "Mystic Kuro",
+      "cls": "Plant",
+      "image": "https://assets.axieinfinity.com/axies/3352/axie/axie-full-transparent.png",
+      "collectible": "Mystic"
     },
     {
       "tx_hash": "0xe2693ddcfd47ae42e4eea22caa9e21d30cacc1fcb960be32718395e4e5ae60a9",
@@ -87,10 +87,10 @@
       "currency": "WETH",
       "price": 1.58,
       "price_usd": 2468.0864,
-      "name": null,
-      "cls": null,
-      "image": null,
-      "collectible": null
+      "name": "Winter Is Gone",
+      "cls": "Aquatic",
+      "image": "https://assets.axieinfinity.com/axies/2552/axie/axie-full-transparent.png",
+      "collectible": "Mystic"
     },
     {
       "tx_hash": "0xe2693ddcfd47ae42e4eea22caa9e21d30cacc1fcb960be32718395e4e5ae60a9",
@@ -152,10 +152,10 @@
       "currency": "WETH",
       "price": 0.3,
       "price_usd": 488.745,
-      "name": null,
-      "cls": null,
-      "image": null,
-      "collectible": null
+      "name": "Rosa",
+      "cls": "Plant",
+      "image": "https://assets.axieinfinity.com/axies/1607/axie/axie-full-transparent.png",
+      "collectible": "Origin"
     },
     {
       "tx_hash": "0x84c7aab240aa32bb5c4b5e31e646e0dd27450f3b61b9839d2a66d9d9438adbbb",
@@ -178,10 +178,10 @@
       "currency": "USDC",
       "price": 484.256401,
       "price_usd": 484.248168641183,
-      "name": null,
-      "cls": null,
-      "image": null,
-      "collectible": null
+      "name": "Orgn",
+      "cls": "Beast",
+      "image": "https://assets.axieinfinity.com/axies/2101/axie/axie-full-transparent.png",
+      "collectible": "Origin"
     },
     {
       "tx_hash": "0xb391c0e35295bd89242b20ab57883f16b3a699fb393cc51f59d673002cf1e859",
@@ -191,10 +191,10 @@
       "currency": "WRON",
       "price": 6710.44994408789,
       "price_usd": 482.7900316773473,
-      "name": null,
-      "cls": null,
-      "image": null,
-      "collectible": null
+      "name": " NO OFFER",
+      "cls": "Beast",
+      "image": "https://assets.axieinfinity.com/axies/1957/axie/axie-full-transparent.png",
+      "collectible": "Origin"
     },
     {
       "tx_hash": "0xf0b5f0a69bd3a388107bdf33ba854eada6d60742e1521a526e0e26371c2871ef",
@@ -204,10 +204,10 @@
       "currency": "WETH",
       "price": 0.27,
       "price_usd": 479.8278000000001,
-      "name": null,
-      "cls": null,
-      "image": null,
-      "collectible": null
+      "name": "Flopin",
+      "cls": "Aquatic",
+      "image": "https://assets.axieinfinity.com/axies/2261/axie/axie-full-transparent.png",
+      "collectible": "Origin"
     },
     {
       "tx_hash": "0x97a75a357ad4dd6e22f41bbdfc797e3f8c74f201905f90e8249c62e2d93de23a",
@@ -230,10 +230,10 @@
       "currency": "WETH",
       "price": 0.29985,
       "price_usd": 479.1812895,
-      "name": null,
-      "cls": null,
-      "image": null,
-      "collectible": null
+      "name": "Axie #1158 (EVOLVING)",
+      "cls": "Plant",
+      "image": "https://assets.axieinfinity.com/axies/1158/axie/axie-full-transparent.png",
+      "collectible": "Origin"
     },
     {
       "tx_hash": "0xf9e7d30e69bcd8a2fb812d6ba576095abd31cd590beb64899b7e916366dbb78a",
@@ -269,10 +269,10 @@
       "currency": "WETH",
       "price": 0.255,
       "price_usd": 451.39845,
-      "name": null,
-      "cls": null,
-      "image": null,
-      "collectible": null
+      "name": "ORIGINS",
+      "cls": "Aquatic",
+      "image": "https://assets.axieinfinity.com/axies/1459/axie/axie-full-transparent.png",
+      "collectible": "Origin"
     },
     {
       "tx_hash": "0xcb727aef1f3ce7735c941bd4964693ef92e120ebb1fd30a56ace2519f9a1006d",
@@ -282,10 +282,10 @@
       "currency": "WETH",
       "price": 0.25,
       "price_usd": 444.405,
-      "name": null,
-      "cls": null,
-      "image": null,
-      "collectible": null
+      "name": "Rosa",
+      "cls": "Plant",
+      "image": "https://assets.axieinfinity.com/axies/1607/axie/axie-full-transparent.png",
+      "collectible": "Origin"
     },
     {
       "tx_hash": "0x580b9cdf7bda756bd24581b0cbaf36bfc4bc504ca5d05453f7db855d17bf4ef0",
@@ -295,10 +295,10 @@
       "currency": "WETH",
       "price": 0.272,
       "price_usd": 435.11296000000004,
-      "name": null,
-      "cls": null,
-      "image": null,
-      "collectible": null
+      "name": "lowest origin",
+      "cls": "Aquatic",
+      "image": "https://assets.axieinfinity.com/axies/1931/axie/axie-full-transparent.png",
+      "collectible": "Origin"
     },
     {
       "tx_hash": "0x1e7c0c60162ff1d1a86a8c4d1259f7473facf7a4206c4df4fa35c8d9ad51cdcb",
@@ -308,10 +308,10 @@
       "currency": "WRON",
       "price": 4683.329837030403,
       "price_usd": 304.0043063813175,
-      "name": null,
-      "cls": null,
-      "image": null,
-      "collectible": null
+      "name": "X-MAS IS COMING",
+      "cls": "Dusk",
+      "image": "https://assets.axieinfinity.com/axies/139171/axie/axie-full-transparent.png",
+      "collectible": "Christmas"
     },
     {
       "tx_hash": "0x0f8445aa95bd26cf6d8cca9b04e2d8a2293dca4896ff12409f7b3726a4c568da",
@@ -334,10 +334,10 @@
       "currency": "AXS",
       "price": 258.95215804614566,
       "price_usd": 238.90304616158087,
-      "name": null,
-      "cls": null,
-      "image": null,
-      "collectible": null
+      "name": "Axie #11939435",
+      "cls": "Plant",
+      "image": "https://assets.axieinfinity.com/axies/11939435/axie/axie-full-transparent.png",
+      "collectible": "Shiny"
     },
     {
       "tx_hash": "0xf3d7ab8ee6576d548038cc388bcc9e893a27d0dbe699b27d684095844f254315",
@@ -347,10 +347,10 @@
       "currency": "AXS",
       "price": 241.70746550321275,
       "price_usd": 223.09502382960335,
-      "name": null,
-      "cls": null,
-      "image": null,
-      "collectible": null
+      "name": "I BOUGHT IT .12 😁. PLAYABLE ",
+      "cls": "Reptile",
+      "image": "https://assets.axieinfinity.com/axies/11950682/axie/axie-full-transparent.png",
+      "collectible": "Shiny"
     },
     {
       "tx_hash": "0x065bac7f90da3bc9ba0fa0d132bbd9858c7abd113f3a077295fbbf01dfb9a9d1",
@@ -373,10 +373,10 @@
       "currency": "WRON",
       "price": 3382.571276780596,
       "price_usd": 219.89757613222974,
-      "name": null,
-      "cls": null,
-      "image": null,
-      "collectible": null
+      "name": "",
+      "cls": "Plant",
+      "image": "https://assets.axieinfinity.com/axies/139152/axie/axie-full-transparent.png",
+      "collectible": "Christmas"
     },
     {
       "tx_hash": "0x6891abdd1c9715d3b092b44eebeb1d0c1693a29a3b4189547cb4b161c188c897",
@@ -386,10 +386,10 @@
       "currency": "USDC",
       "price": 208.422351,
       "price_usd": 208.36399274172,
-      "name": null,
-      "cls": null,
-      "image": null,
-      "collectible": null
+      "name": "Axie #11881735",
+      "cls": "Bird",
+      "image": "https://assets.axieinfinity.com/axies/11881735/axie/axie-full-transparent.png",
+      "collectible": "MEO"
     },
     {
       "tx_hash": "0xbefe1beba96282371e4c425f79dcbe4d3b0f7b69c31849981790cfff29870648",
@@ -399,10 +399,10 @@
       "currency": "USDC",
       "price": 202.108078,
       "price_usd": 202.05148773816,
-      "name": null,
-      "cls": null,
-      "image": null,
-      "collectible": null
+      "name": "AOE BLEEDING.! NICE",
+      "cls": "Beast",
+      "image": "https://assets.axieinfinity.com/axies/6697/axie/axie-full-transparent.png",
+      "collectible": "MEO"
     },
     {
       "tx_hash": "0x4e5220affd1b60caefd95995cbd393a7716230083d4fd9f0ca314e50566f4a63",
@@ -451,10 +451,10 @@
       "currency": "AXS",
       "price": 209.9356994231009,
       "price_usd": 196.7275948938965,
-      "name": null,
-      "cls": null,
-      "image": null,
-      "collectible": null
+      "name": "Matcha",
+      "cls": "Plant",
+      "image": "https://assets.axieinfinity.com/axies/11453474/axie/axie-full-transparent.png",
+      "collectible": "Shiny"
     },
     {
       "tx_hash": "0x4ac41a4b21aa50df000e273bb1261c310350a9ca1e7c92d23b9da0769ab54c75",
@@ -464,10 +464,10 @@
       "currency": "USDC",
       "price": 195.672008,
       "price_usd": 195.61721983776002,
-      "name": null,
-      "cls": null,
-      "image": null,
-      "collectible": null
+      "name": "",
+      "cls": "Plant",
+      "image": "https://assets.axieinfinity.com/axies/12069604/axie/axie-full-transparent.png",
+      "collectible": "MEO"
     },
     {
       "tx_hash": "0x2b8f88c2818446306e4987cb2e94c6853a986800877ead7ac980dc5719c044e7",
@@ -477,10 +477,10 @@
       "currency": "WETH",
       "price": 0.125,
       "price_usd": 195.4075,
-      "name": null,
-      "cls": null,
-      "image": null,
-      "collectible": null
+      "name": "😈 Demit (´ω｀)",
+      "cls": "Aquatic",
+      "image": "https://assets.axieinfinity.com/axies/138118/axie/axie-full-transparent.png",
+      "collectible": "Christmas"
     },
     {
       "tx_hash": "0x00e2589649c0d76d5e2ceed98a28954594a0337bdbc03a7e082190f1b4740b80",
@@ -490,10 +490,10 @@
       "currency": "WETH",
       "price": 0.11,
       "price_usd": 195.32260000000002,
-      "name": null,
-      "cls": null,
-      "image": null,
-      "collectible": null
+      "name": "☠YAKUZA☠BRUTUS☠",
+      "cls": "Beast",
+      "image": "https://assets.axieinfinity.com/axies/3600645/axie/axie-full-transparent.png",
+      "collectible": "Nightmare"
     },
     {
       "tx_hash": "0x7ef904e5307505811324d0e9099ef9b40fdf4ef304aaa1467482bc52703195cb",
@@ -503,10 +503,10 @@
       "currency": "USDC",
       "price": 195.157982,
       "price_usd": 195.119145561582,
-      "name": null,
-      "cls": null,
-      "image": null,
-      "collectible": null
+      "name": "$195.157982",
+      "cls": "Beast",
+      "image": "https://assets.axieinfinity.com/axies/23197/axie/axie-full-transparent.png",
+      "collectible": "MEO"
     },
     {
       "tx_hash": "0x459415ed42ff8bae04c702915a4b879ba0c5f7f405c2067989319aff4146a6a9",
@@ -516,10 +516,10 @@
       "currency": "AXS",
       "price": 204.29097034436,
       "price_usd": 193.15547813282964,
-      "name": null,
-      "cls": null,
-      "image": null,
-      "collectible": null
+      "name": "Shiny & 5x Summer ",
+      "cls": "Aquatic",
+      "image": "https://assets.axieinfinity.com/axies/11429880/axie/axie-full-transparent.png",
+      "collectible": "Shiny"
     },
     {
       "tx_hash": "0xdd69a307f35a6517647ff5ee108ff38ae0e79d7e7fb6e0f1752f9d6231c44775",
@@ -529,10 +529,10 @@
       "currency": "USDC",
       "price": 187.467394,
       "price_usd": 187.42333916241,
-      "name": null,
-      "cls": null,
-      "image": null,
-      "collectible": null
+      "name": "",
+      "cls": "Reptile",
+      "image": "https://assets.axieinfinity.com/axies/11419703/axie/axie-full-transparent.png",
+      "collectible": "Shiny"
     },
     {
       "tx_hash": "0x7d408b3599cc36d43e2f684e078e5f9c79cdb23800e6b0e3c9d53f18ca0251dd",
@@ -542,10 +542,10 @@
       "currency": "WETH",
       "price": 0.11,
       "price_usd": 185.1036,
-      "name": null,
-      "cls": null,
-      "image": null,
-      "collectible": null
+      "name": "Meoryx",
+      "cls": "Plant",
+      "image": "https://assets.axieinfinity.com/axies/4837/axie/axie-full-transparent.png",
+      "collectible": "MEO"
     },
     {
       "tx_hash": "0x35c68658d3199faaf9ca02133b4405998cf1b501290909ed07c3db09e594c792",
@@ -555,10 +555,10 @@
       "currency": "AXS",
       "price": 191.07690691491177,
       "price_usd": 180.6735336410225,
-      "name": null,
-      "cls": null,
-      "image": null,
-      "collectible": null
+      "name": "šajny",
+      "cls": "Beast",
+      "image": "https://assets.axieinfinity.com/axies/11436561/axie/axie-full-transparent.png",
+      "collectible": "Shiny"
     },
     {
       "tx_hash": "0xebf0a948847ccadb5d24ecf3cf3fea22b69442bcd8225db2e6a1c7122a0a0b71",
@@ -581,10 +581,10 @@
       "currency": "USDC",
       "price": 177.063338,
       "price_usd": 177.028102395738,
-      "name": null,
-      "cls": null,
-      "image": null,
-      "collectible": null
+      "name": "$177.059499",
+      "cls": "Dusk",
+      "image": "https://assets.axieinfinity.com/axies/11394510/axie/axie-full-transparent.png",
+      "collectible": "Shiny"
     },
     {
       "tx_hash": "0x73ddc83b0fdc213b37d98dd4da2668f9c96215e8e43aff674a0efc8b7a18e526",
@@ -594,10 +594,10 @@
       "currency": "WETH",
       "price": 0.105,
       "price_usd": 176.31495,
-      "name": null,
-      "cls": null,
-      "image": null,
-      "collectible": null
+      "name": "Axie #11579283",
+      "cls": "Plant",
+      "image": "https://assets.axieinfinity.com/axies/11579283/axie/axie-full-transparent.png",
+      "collectible": "MEO"
     },
     {
       "tx_hash": "0xa54a9ade35f2c4a76fc264760af6d4a8ab9ddd4eb375948ee14aa684b6dbf15d",
@@ -646,10 +646,10 @@
       "currency": "WETH",
       "price": 0.10434,
       "price_usd": 175.5374424,
-      "name": null,
-      "cls": null,
-      "image": null,
-      "collectible": null
+      "name": "* Frozen Bucket *",
+      "cls": "Plant",
+      "image": "https://assets.axieinfinity.com/axies/137896/axie/axie-full-transparent.png",
+      "collectible": "Christmas"
     }
   ]
 }
