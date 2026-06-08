@@ -40,6 +40,16 @@ export const compactUsd = (n) =>
 export const compactNum = (n) => compactFmt.format(Number(n) || 0)
 export const num = (n) => new Intl.NumberFormat('en-US').format(Number(n) || 0)
 
+// WETH (Ξ) amounts. Precision adapts to magnitude: big totals read cleanly with
+// no/2 decimals, while sub-1 floors keep 4 so they don't round to zero.
+export const eth = (n) => {
+  const x = Number(n) || 0
+  const ax = Math.abs(x)
+  const d = ax >= 1000 ? 0 : ax >= 1 ? 2 : 4
+  return 'Ξ' + new Intl.NumberFormat('en-US', { maximumFractionDigits: d }).format(x)
+}
+export const compactEth = (n) => 'Ξ' + compactFmt.format(Number(n) || 0)
+
 export function timeAgo(ts) {
   const seconds = Math.floor(Date.now() / 1000 - Number(ts))
   if (seconds < 60) return `${seconds}s ago`
