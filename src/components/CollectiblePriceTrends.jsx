@@ -16,6 +16,10 @@ const COLORS = {
   Summer: '#ffb800', Nightmare: '#8a90a6', Christmas: '#6abe30', MEO: '#ff8fc7',
 }
 
+// Pinned to the top of the legend/chart and shown by default; everything else
+// starts toggled off so the panel opens focused on these two.
+const PRIORITY = ['Mystic', 'Origin']
+
 function PriceTooltip({ active, payload, label, fmt }) {
   if (!active || !payload?.length) return null
   const rows = payload
@@ -46,11 +50,22 @@ export default function CollectiblePriceTrends() {
         if (!r.ok) throw new Error(`dune-collectible-prices.json not found (HTTP ${r.status})`)
         return r.json()
       })
-      .then(setData)
+      .then((d) => {
+        setData(d)
+        // Default: only the priority collections visible; hide the rest.
+        const cols = d?.collections ?? []
+        setHidden(new Set(cols.filter((c) => !PRIORITY.includes(c))))
+      })
       .catch((e) => setError(e.message))
   }, [])
 
-  const collections = useMemo(() => data?.collections ?? [], [data])
+  // Priority collections first (in PRIORITY order), then the rest as-is. Used for
+  // both the legend and the line render order.
+  const collections = useMemo(() => {
+    const cols = data?.collections ?? []
+    const pinned = PRIORITY.filter((c) => cols.includes(c))
+    return [...pinned, ...cols.filter((c) => !pinned.includes(c))]
+  }, [data])
   // WETH-denominated series (ETH-equivalent), falling back to empty when the
   // Dune query hasn't been updated to emit median_weth yet.
   const rowsWeth = useMemo(() => data?.daysWeth ?? [], [data])
