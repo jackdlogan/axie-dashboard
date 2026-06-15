@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-06-08T06:18:01.048Z",
+  "generatedAt": "2026-06-15T04:39:57.179Z",
   "metric": "holders",
   "collections": [
     "Christmas",
@@ -18811,13 +18811,90 @@
     {
       "day": "2026-06-08",
       "Christmas": 1029,
-      "Japanese": 6903,
-      "MEO": 1597,
+      "Japanese": 6897,
+      "MEO": 1592,
       "Mystic": 458,
-      "Nightmare": 5649,
-      "Origin": 907,
+      "Nightmare": 5642,
+      "Origin": 908,
       "Shiny": 849,
-      "Summer": 11027
+      "Summer": 11026
+    },
+    {
+      "day": "2026-06-09",
+      "Christmas": 1029,
+      "Japanese": 6894,
+      "MEO": 1594,
+      "Mystic": 458,
+      "Nightmare": 5635,
+      "Origin": 909,
+      "Shiny": 849,
+      "Summer": 11031
+    },
+    {
+      "day": "2026-06-10",
+      "Christmas": 1028,
+      "Japanese": 6894,
+      "MEO": 1596,
+      "Mystic": 458,
+      "Nightmare": 5635,
+      "Origin": 908,
+      "Shiny": 848,
+      "Summer": 11034
+    },
+    {
+      "day": "2026-06-11",
+      "Christmas": 1027,
+      "Japanese": 6890,
+      "MEO": 1597,
+      "Mystic": 457,
+      "Nightmare": 5636,
+      "Origin": 911,
+      "Shiny": 847,
+      "Summer": 11032
+    },
+    {
+      "day": "2026-06-12",
+      "Christmas": 1028,
+      "Japanese": 6887,
+      "MEO": 1590,
+      "Mystic": 456,
+      "Nightmare": 5624,
+      "Origin": 908,
+      "Shiny": 846,
+      "Summer": 11032
+    },
+    {
+      "day": "2026-06-13",
+      "Christmas": 1026,
+      "Japanese": 6880,
+      "MEO": 1583,
+      "Mystic": 454,
+      "Nightmare": 5622,
+      "Origin": 904,
+      "Shiny": 841,
+      "Summer": 11024
+    },
+    {
+      "day": "2026-06-14",
+      "Christmas": 1025,
+      "Japanese": 6875,
+      "MEO": 1583,
+      "Mystic": 453,
+      "Nightmare": 5627,
+      "Origin": 897,
+      "Shiny": 841,
+      "Summer": 11018
+    },
+    {
+      "day": "2026-06-15",
+      "Christmas": 1024,
+      "Japanese": 6876,
+      "MEO": 1583,
+      "Mystic": 453,
+      "Nightmare": 5628,
+      "Origin": 897,
+      "Shiny": 841,
+      "Summer": 11018
     }
   ]
 }
