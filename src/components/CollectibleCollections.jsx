@@ -57,6 +57,25 @@ const COLUMNS = [
 // Resolve a metric/column id to the actual row field for the active currency.
 const field = (key, cur) => (PRICED.has(key) ? key + (cur === 'eth' ? 'Eth' : 'Usd') : key)
 
+// Themed tooltip so text is always readable on the dark panel (the default
+// Recharts tooltip leaves label/value on dark fallback colors). Matches the
+// .chart-tooltip style used by the other charts.
+function DeepDiveTooltip({ active, payload, label, fmt, metricLabel }) {
+  if (!active || !payload?.length) return null
+  const p = payload[0]
+  return (
+    <div className="chart-tooltip">
+      <div className="chart-tooltip-label" style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
+        <span className="legend-dot" style={{ background: p.payload?.color ?? '#8a90a6' }} />
+        {label}
+      </div>
+      <div style={{ color: 'var(--muted)' }}>
+        {metricLabel}: <span style={{ color: 'var(--text)' }}>{fmt(p.value)}</span>
+      </div>
+    </div>
+  )
+}
+
 export default function CollectibleCollections({ tokensStats, ethUsd }) {
   const [cur, setCur] = useState('eth') // 'eth' (WETH) | 'usd'
   const [metric, setMetric] = useState('marketCap')
@@ -238,12 +257,7 @@ export default function CollectibleCollections({ tokensStats, ethUsd }) {
           />
           <Tooltip
             cursor={{ fill: '#ffffff08' }}
-            contentStyle={{
-              background: '#161922',
-              border: '1px solid #20222b',
-              borderRadius: 8,
-            }}
-            formatter={(v) => [chartFmt(v), metricLabel]}
+            content={<DeepDiveTooltip fmt={chartFmt} metricLabel={metricLabel} />}
           />
           <Bar dataKey={metricField} radius={[0, 4, 4, 0]}>
             {chartData.map((r) => (
