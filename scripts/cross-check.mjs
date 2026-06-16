@@ -213,7 +213,8 @@ h('4 · Holders — Dune latest reconstruction vs live Sky Mavis tokensStats')
 const LIVE_KEY = { Origin: 'originAxie', Mystic: 'mysticAxie', Shiny: 'shinyAxie', Japanese: 'japanAxie', Summer: 'summerAxie', Nightmare: 'nightmareAxie', Christmas: 'xmasAxie', MEO: 'meoAxie' }
 const KNOWN = { // documented structural divergences (see memory axie-collectible-holders)
   MEO: 'Sky Mavis tokensStats.holders is STALE (frozen ~May 2021 at ~375); on-chain truth ≈ Dune. EXPECTED divergence.',
-  Origin: 'single-membership seed files all-Mystic founders under Mystic, shrinking Origin. EXPECTED ~−20%.',
+  // Origin was −21% under the single-membership seed; the multi-membership seed
+  // fixed it (now ~−1%), so it is scored normally again — re-flag only if it drifts.
 }
 const latestH = holders.days.at(-1)
 console.log(`  ${'collection'.padEnd(11)} ${'dune'.padStart(7)} ${'SkyMavis'.padStart(8)} ${'Δ'.padStart(7)}  verdict`)

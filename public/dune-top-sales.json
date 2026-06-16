@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-06-15T04:43:07.422Z",
+  "generatedAt": "2026-06-16T04:30:13.431Z",
   "sales": [
     {
       "tx_hash": "0x8619e387b666287539cc82b0fdb046db9cd526dde09ae5d83b9240751acfbaf0",
@@ -12,6 +12,32 @@
       "name": "1st Hokage",
       "cls": "Aquatic",
       "image": "https://assets.axieinfinity.com/axies/3426/axie/axie-full-transparent.png",
+      "collectible": "Mystic"
+    },
+    {
+      "tx_hash": "0x8df74277550c4aaf4d5209c1277bbce420f348173e8c7fde3cad7919910d3be1",
+      "token_id": "2236",
+      "block_time": "2026-06-15 19:13:27.000 UTC",
+      "buyer": "0x87bacc1e6501fdc050192811bad55954620836de",
+      "currency": "WETH",
+      "price": 1.5,
+      "price_usd": 2746.2749999999996,
+      "name": "Axie #2236",
+      "cls": "Aquatic",
+      "image": "https://assets.axieinfinity.com/axies/2236/axie/axie-full-transparent.png",
+      "collectible": "Mystic"
+    },
+    {
+      "tx_hash": "0x04561fc29e90d92b5974b4a8d4fb00f7cf002961f4429483ab5c8faa43a44c63",
+      "token_id": "1119",
+      "block_time": "2026-06-15 19:37:47.000 UTC",
+      "buyer": "0x87bacc1e6501fdc050192811bad55954620836de",
+      "currency": "WETH",
+      "price": 1.5,
+      "price_usd": 2734.305,
+      "name": "Axie #1119",
+      "cls": "Beast",
+      "image": "https://assets.axieinfinity.com/axies/1119/axie/axie-full-transparent.png",
       "collectible": "Mystic"
     },
     {
@@ -38,6 +64,19 @@
       "name": "5 Evo Bloodlust Aqua Origin",
       "cls": "Aquatic",
       "image": "https://assets.axieinfinity.com/axies/1519/axie/axie-full-transparent.png",
+      "collectible": "Origin"
+    },
+    {
+      "tx_hash": "0x6de1087aff87f59cbae54a40b09824cb559caa7ad0810be288551889a0032004",
+      "token_id": "1327",
+      "block_time": "2026-06-16 02:32:31.000 UTC",
+      "buyer": "0x5893431249681023873d582914b121903a9649d9",
+      "currency": "WETH",
+      "price": 0.375,
+      "price_usd": 665.085,
+      "name": ".425 auto accept",
+      "cls": "Beast",
+      "image": "https://assets.axieinfinity.com/axies/1327/axie/axie-full-transparent.png",
       "collectible": "Origin"
     },
     {
@@ -184,19 +223,6 @@
       "collectible": "Origin"
     },
     {
-      "tx_hash": "0xbbddf4514f7696e8f8cebfd7675b9d3990f755080122a8968faba59c855a987b",
-      "token_id": "3045",
-      "block_time": "2026-06-08 18:01:45.000 UTC",
-      "buyer": "0xcb9d70a8d5d487e908299574a5cc3d7a04a46c29",
-      "currency": "WRON",
-      "price": 8493.743501417157,
-      "price_usd": 541.6545168288735,
-      "name": "Axie #3045",
-      "cls": "Aquatic",
-      "image": "https://assets.axieinfinity.com/axies/3045/axie/axie-full-transparent.png",
-      "collectible": "Origin"
-    },
-    {
       "tx_hash": "0xef705d7de7f7e6cfb92e1ba13d4ece096f8f88ba59b3076cbf398f436df60427",
       "token_id": "2225",
       "block_time": "2026-06-13 10:35:59.000 UTC",
@@ -262,6 +288,19 @@
       "collectible": "Shiny"
     },
     {
+      "tx_hash": "0x982b82d76654087fa742a069ec61824f2a34e14f9639a4f4385749f11851e434",
+      "token_id": "7930026",
+      "block_time": "2026-06-15 14:44:25.000 UTC",
+      "buyer": "0x606fd755081d7ea7c1e2d6faafe6d9cdb1ea142c",
+      "currency": "WETH",
+      "price": 0.2,
+      "price_usd": 361.954,
+      "name": "Axie #7930026",
+      "cls": "Plant",
+      "image": "https://assets.axieinfinity.com/axies/7930026/axie/axie-full-transparent.png",
+      "collectible": ""
+    },
+    {
       "tx_hash": "0xa7edf6d90a58190e23ea12d55d23b97de54830ccac05533cdd9a94068c1bc825",
       "token_id": "11605085",
       "block_time": "2026-06-13 18:22:13.000 UTC",
@@ -298,6 +337,19 @@
       "name": "Axie #139690",
       "cls": "Aquatic",
       "image": "https://assets.axieinfinity.com/axies/139690/axie/axie-full-transparent.png",
+      "collectible": "Christmas"
+    },
+    {
+      "tx_hash": "0xbdd4771a8301e238265dcb48ce0cf0477b4a7490fd9776820677dce9a9ce5c08",
+      "token_id": "138289",
+      "block_time": "2026-06-15 18:29:17.000 UTC",
+      "buyer": "0x2aa762f40260700b61107a972241d188779e05c0",
+      "currency": "WETH",
+      "price": 0.185,
+      "price_usd": 338.51855,
+      "name": "Accepting good offers",
+      "cls": "Aquatic",
+      "image": "https://assets.axieinfinity.com/axies/138289/axie/axie-full-transparent.png",
       "collectible": "Christmas"
     },
     {
@@ -366,17 +418,17 @@
       "collectible": "Christmas"
     },
     {
-      "tx_hash": "0x1e7c0c60162ff1d1a86a8c4d1259f7473facf7a4206c4df4fa35c8d9ad51cdcb",
-      "token_id": "139171",
-      "block_time": "2026-06-08 03:41:09.000 UTC",
-      "buyer": "0x69d5afa3a897a87992a07972e71081705f5aaa68",
-      "currency": "WRON",
-      "price": 4683.329837030403,
-      "price_usd": 304.0043063813175,
-      "name": "X-MAS IS COMING",
-      "cls": "Dusk",
-      "image": "https://assets.axieinfinity.com/axies/139171/axie/axie-full-transparent.png",
-      "collectible": "Christmas"
+      "tx_hash": "0x0e55b10b7ad49b1027420cce7fb462a885cd99afedeb9dcd6259fd7ffc9232da",
+      "token_id": "11943276",
+      "block_time": "2026-06-15 17:26:01.000 UTC",
+      "buyer": "0xb9256c8db2b786e977aa0255e318ece64831b8e2",
+      "currency": "AXS",
+      "price": 262.6744520547719,
+      "price_usd": 265.8444073421689,
+      "name": "Axie #11943276",
+      "cls": "Plant",
+      "image": "https://assets.axieinfinity.com/axies/11943276/axie/axie-full-transparent.png",
+      "collectible": "MEO"
     },
     {
       "tx_hash": "0xfb7cc841c5ecbdcc0fc4d48082d0b45e1eb90d17ccfb1b0150ea9ff3ff252753",
@@ -392,17 +444,17 @@
       "collectible": "MEO"
     },
     {
-      "tx_hash": "0x007e80bf94df6be68be5df9982f56d6b3123cfd47a63b40cab6cef9fd2a002a1",
-      "token_id": "12164646",
-      "block_time": "2026-06-08 18:47:11.000 UTC",
-      "buyer": "0x0abfe2203f2a5fe8cf3245c274e7130611c3df4e",
-      "currency": "WETH",
-      "price": 0.15,
-      "price_usd": 252.5115,
-      "name": "Axie #12164646",
-      "cls": "Dusk",
-      "image": "https://assets.axieinfinity.com/axies/12164646/axie/axie-full-transparent.png",
-      "collectible": "Shiny"
+      "tx_hash": "0x6bd9c16047baed533c8b9b9c65697ad8bc8bc73ed6364903688affe883ce8958",
+      "token_id": "23206",
+      "block_time": "2026-06-15 19:30:29.000 UTC",
+      "buyer": "0x783ad3523031a3d2d858967b8f08a7bb4cd15d86",
+      "currency": "AXS",
+      "price": 259.8205614635214,
+      "price_usd": 259.7735339418965,
+      "name": "#23206",
+      "cls": "Aquatic",
+      "image": "https://assets.axieinfinity.com/axies/23206/axie/axie-full-transparent.png",
+      "collectible": "MEO"
     },
     {
       "tx_hash": "0x01a4cd091fec274499569786f65619fb41e0f0c66be2c8c0931490e5ef5ea25f",
@@ -454,6 +506,19 @@
       "name": "Axie #998699",
       "cls": "Bird",
       "image": "https://assets.axieinfinity.com/axies/998699/axie/axie-full-transparent.png",
+      "collectible": "MEO"
+    },
+    {
+      "tx_hash": "0x1b688beed2058262024e20b5b311efdfdabac6e726c41efa7cdd834e53fad917",
+      "token_id": "4653",
+      "block_time": "2026-06-16 03:27:55.000 UTC",
+      "buyer": "0x8aa508476ca5f27d239b5c24f94ec97dcf400e33",
+      "currency": "WETH",
+      "price": 0.14,
+      "price_usd": 247.80700000000002,
+      "name": "?",
+      "cls": "Beast",
+      "image": "https://assets.axieinfinity.com/axies/4653/axie/axie-full-transparent.png",
       "collectible": "MEO"
     },
     {
@@ -574,81 +639,16 @@
       "collectible": "Shiny"
     },
     {
-      "tx_hash": "0x2cabc9780cd6afef74532b4c885c758908982bd993ab4eecacb1157fc70d4588",
-      "token_id": "11929245",
-      "block_time": "2026-06-14 20:01:47.000 UTC",
-      "buyer": "0xb9256c8db2b786e977aa0255e318ece64831b8e2",
-      "currency": "AXS",
-      "price": 248.21007365822987,
-      "price_usd": 234.3423286328709,
-      "name": "CatGill / Rice / KOI / Perch",
-      "cls": "Aquatic",
-      "image": "https://assets.axieinfinity.com/axies/11929245/axie/axie-full-transparent.png",
-      "collectible": "MEO"
-    },
-    {
-      "tx_hash": "0x9f7f2271cfd274e7c60c5acfd27bfd465e5d79e3d842d0cbd1fef83160cc6cde",
-      "token_id": "11638147",
-      "block_time": "2026-06-14 15:48:31.000 UTC",
-      "buyer": "0x7f8d45d28cda0e4ada4b6780a7a33a3f52d5fef8",
-      "currency": "AXS",
-      "price": 248.0919217384433,
-      "price_usd": 234.28039636334242,
-      "name": "BEST FOR MORPHING",
-      "cls": "Plant",
-      "image": "https://assets.axieinfinity.com/axies/11638147/axie/axie-full-transparent.png",
-      "collectible": "MEO"
-    },
-    {
-      "tx_hash": "0xca6b3f6018a9c8501514088325bd05a60d6f16557bd5bea7d594afddd89bd7dd",
-      "token_id": "11443969",
-      "block_time": "2026-06-12 18:56:45.000 UTC",
-      "buyer": "0x73144ca8ee8c48a9f95b76114107d269e6403c86",
+      "tx_hash": "0x8bddfb322e5ca5dfad15d66aa917f7324a5e6a31bf456ab8fd298f6436f82296",
+      "token_id": "12036965",
+      "block_time": "2026-06-15 14:18:17.000 UTC",
+      "buyer": "0x13de529c488e2619f12cdb6e273fb7f097701fa4",
       "currency": "WETH",
-      "price": 0.13821963734567902,
-      "price_usd": 230.62499369675928,
-      "name": "Soel",
-      "cls": "Bird",
-      "image": "https://assets.axieinfinity.com/axies/11443969/axie/axie-full-transparent.png",
-      "collectible": "Shiny"
-    },
-    {
-      "tx_hash": "0xe76ef102664e53eb6192a462311d19dd42268088d6e461e32d21e8cc296c1c3f",
-      "token_id": "7989",
-      "block_time": "2026-06-13 15:00:01.000 UTC",
-      "buyer": "0x783ad3523031a3d2d858967b8f08a7bb4cd15d86",
-      "currency": "AXS",
-      "price": 237.49097243896406,
-      "price_usd": 230.03470586827035,
-      "name": "#7989",
-      "cls": "Aquatic",
-      "image": "https://assets.axieinfinity.com/axies/7989/axie/axie-full-transparent.png",
-      "collectible": "MEO"
-    },
-    {
-      "tx_hash": "0x103e432665aa10fe5c83d5800bf9ba55f471b7b0a4b4bbea074d43984db3687e",
-      "token_id": "140514",
-      "block_time": "2026-06-09 00:13:29.000 UTC",
-      "buyer": "0x78e7d612d0cc1ae72494ac726b4d0a7ae9dfc322",
-      "currency": "WETH",
-      "price": 0.133,
-      "price_usd": 224.23534,
-      "name": "56 slips ",
-      "cls": "Dusk",
-      "image": "https://assets.axieinfinity.com/axies/140514/axie/axie-full-transparent.png",
-      "collectible": "Christmas"
-    },
-    {
-      "tx_hash": "0xd8beca220a2c08c4fb06f200754c8b696dcc1fe463cf1bbebc278a334e7e5d83",
-      "token_id": "13125",
-      "block_time": "2026-06-13 04:01:43.000 UTC",
-      "buyer": "0x1c512f9003e82b3553c287376834a62067c84941",
-      "currency": "WETH",
-      "price": 0.133,
-      "price_usd": 221.39845000000003,
-      "name": "RARE BIRD - MEO II",
-      "cls": "Bird",
-      "image": "https://assets.axieinfinity.com/axies/13125/axie/axie-full-transparent.png",
+      "price": 0.13,
+      "price_usd": 235.0101,
+      "name": "Axie #12036965",
+      "cls": "Beast",
+      "image": "https://assets.axieinfinity.com/axies/12036965/axie/axie-full-transparent.png",
       "collectible": "MEO"
     }
   ]
