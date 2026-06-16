@@ -83,7 +83,7 @@ export default function DuneTrends() {
   return (
     <div className="panel">
       <div className="panel-head">
-        <h2>app.axie Sales — {data.totals.ndays} Days</h2>
+        <h2>On-chain Trend — {data.totals.ndays} Days</h2>
         <div className="seg">
           {METRICS.map((m) => (
             <button
@@ -101,8 +101,8 @@ export default function DuneTrends() {
         <span><strong>{num(data.totals.sales)}</strong> sales</span>
         <span><strong>{compactUsd(data.totals.volume_usd)}</strong> volume</span>
         <span className="muted small">
-          on-chain via Dune · as of{' '}
-          {new Date(data.generatedAt).toLocaleDateString()}
+          on-chain estimate via Dune · runs below the Sky Mavis headline (decode
+          coverage) · as of {new Date(data.generatedAt).toLocaleDateString()}
         </span>
       </div>
 

@@ -10,12 +10,26 @@ import CollectiblePriceTrends from './components/CollectiblePriceTrends.jsx'
 import CollectibleHolderTrends from './components/CollectibleHolderTrends.jsx'
 import DuneTrends from './components/DuneTrends.jsx'
 import DuneTopSales from './components/DuneTopSales.jsx'
-import MarketMomentum from './components/MarketMomentum.jsx'
 import TopBuyers from './components/TopBuyers.jsx'
 import RatesBar from './components/RatesBar.jsx'
 
+// Period-over-period volume trend from the Dune daily series: sum the last `n`
+// days vs the `n` days before, return the signed percent change. Sky Mavis is
+// the source of truth for the absolute figures, but it only exposes rolling
+// buckets (no prior period), so the *trend* badge has to come from Dune.
+// NB: never name a binding `window` here (shadows the global Fast Refresh needs).
+function windowDelta(rows, n, key = 'volume_usd') {
+  if (!rows || rows.length < n * 2) return null
+  const sum = (arr) => arr.reduce((a, r) => a + (Number(r[key]) || 0), 0)
+  const cur = sum(rows.slice(-n))
+  const prev = sum(rows.slice(-n * 2, -n))
+  if (!prev) return null
+  return ((cur - prev) / prev) * 100
+}
+
 export default function App() {
   const [data, setData] = useState(null)
+  const [duneDays, setDuneDays] = useState(null)
   const [error, setError] = useState(null)
   const [loading, setLoading] = useState(true)
   const [refreshedAt, setRefreshedAt] = useState(null)
@@ -34,6 +48,12 @@ export default function App() {
 
   useEffect(() => {
     load()
+    // Dune daily series — used only for the period-over-period trend badges.
+    // A miss simply means no badges; the headline numbers don't depend on it.
+    fetch('/dune-daily.json')
+      .then((r) => (r.ok ? r.json() : null))
+      .then((d) => setDuneDays(d?.days ?? null))
+      .catch(() => setDuneDays(null))
   }, [])
 
   if (loading && !data) {
@@ -95,26 +115,27 @@ export default function App() {
 
       <RatesBar rates={data.exchangeRate} />
 
-      <MarketMomentum />
-
       <section className="kpi-grid">
         <KpiCard
           label="Volume · 24h"
           value={compactUsd(ms.last24Hours.volumeUsd)}
           sub={`${num(ms.last24Hours.count)} sales`}
-          accent="#5b8cff"
+          delta={windowDelta(duneDays, 1)}
+          deltaLabel="DoD"
         />
         <KpiCard
           label="Volume · 7d"
           value={compactUsd(ms.last7Days.volumeUsd)}
           sub={`${num(ms.last7Days.count)} sales`}
-          accent="#5b8cff"
+          delta={windowDelta(duneDays, 7)}
+          deltaLabel="WoW"
         />
         <KpiCard
           label="Volume · 30d"
           value={compactUsd(ms.last30Days.volumeUsd)}
           sub={`${num(ms.last30Days.count)} sales`}
-          accent="#5b8cff"
+          delta={windowDelta(duneDays, 30)}
+          deltaLabel="MoM"
         />
         <KpiCard
           label="All-time volume"
@@ -135,6 +156,11 @@ export default function App() {
           accent="#b06bff"
         />
       </section>
+
+      <p className="muted small kpi-note">
+        Headline figures via Sky Mavis marketplace API. ▲/▼ badges show the
+        period-over-period trend (on-chain via Dune).
+      </p>
 
       <section className="chart-grid">
         <ActivityChart data={periodData} />

@@ -148,6 +148,27 @@ body {
   margin-top: 6px;
   font-variant-numeric: tabular-nums;
 }
+.kpi-delta {
+  font-size: 13px;
+  font-weight: 600;
+  margin-top: 8px;
+  font-variant-numeric: tabular-nums;
+}
+.kpi-delta.up {
+  color: var(--accent-2);
+}
+.kpi-delta.down {
+  color: var(--neg);
+}
+.kpi-delta-tag {
+  color: var(--faint);
+  font-weight: 600;
+  font-size: 11px;
+  letter-spacing: 0.04em;
+}
+.kpi-note {
+  margin: -10px 0 24px;
+}
 
 /* Charts */
 .chart-grid {
@@ -363,37 +384,6 @@ body {
 .coll-icon--none {
   border-radius: 6px;
   background: var(--bg-panel-2);
-}
-
-/* Market momentum */
-.mom-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-  gap: 14px;
-}
-.mom-card {
-  background: var(--bg-panel-2);
-  border: 1px solid var(--border);
-  border-radius: 10px;
-  padding: 14px 16px;
-}
-.mom-value {
-  font-family: var(--font-display);
-  font-size: 26px;
-  font-weight: 700;
-  margin: 8px 0 6px;
-  letter-spacing: -0.02em;
-  font-variant-numeric: tabular-nums;
-}
-.mom-delta {
-  font-size: 13px;
-  font-weight: 600;
-}
-.mom-delta.up {
-  color: var(--accent-2);
-}
-.mom-delta.down {
-  color: var(--neg);
 }
 
 /* States & misc */
