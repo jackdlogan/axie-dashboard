@@ -28,6 +28,12 @@ const COLLECTIBLES = [
   ['meoAxie', 'MEO', '#ff8fc7', 'meo'],
 ]
 
+// Collections whose live Sky Mavis holder count is STALE and must be replaced by
+// the on-chain reconstruction (dune-collectible-holders.json). MEO: Sky Mavis
+// reports 375, frozen at its ~2021 value, while the collection has ~1,580 holders
+// today (verified on-chain). Mirrors STALE_LIVE_HOLDERS in CollectibleHolderTrends.
+const STALE_LIVE_HOLDERS = new Set(['MEO'])
+
 // Metric ids are currency-agnostic; the active currency picks the Eth/Usd field.
 const CHART_METRICS = [
   { id: 'marketCap', label: 'Market cap' },
@@ -83,12 +89,36 @@ export default function CollectibleCollections({ tokensStats, ethUsd }) {
   // Live order-book floors for the addressable collections; null until loaded,
   // and a failed fetch simply leaves every collection on its cached floor.
   const [liveFloors, setLiveFloors] = useState(null)
+  // Latest on-chain holder count per collection (from the same Dune
+  // reconstruction the holders chart uses) — only consulted for STALE_LIVE_HOLDERS.
+  const [onchainHolders, setOnchainHolders] = useState(null)
 
   useEffect(() => {
     let alive = true
     fetchCollectibleFloors()
       .then((f) => alive && setLiveFloors(f))
       .catch(() => alive && setLiveFloors({})) // fall back to cached floors
+    return () => {
+      alive = false
+    }
+  }, [])
+
+  useEffect(() => {
+    let alive = true
+    fetch('/dune-collectible-holders.json')
+      .then((r) => (r.ok ? r.json() : null))
+      .then((d) => {
+        if (!alive || !d?.days?.length) return
+        // Latest non-null reconstructed holder count per collection.
+        const latest = {}
+        for (const c of d.collections ?? []) {
+          for (let i = d.days.length - 1; i >= 0; i--) {
+            if (d.days[i][c] != null) { latest[c] = Number(d.days[i][c]); break }
+          }
+        }
+        setOnchainHolders(latest)
+      })
+      .catch(() => alive && setOnchainHolders({})) // fall back to live tokensStats
     return () => {
       alive = false
     }
@@ -109,7 +139,11 @@ export default function CollectibleCollections({ tokensStats, ethUsd }) {
       const floorEth = floorLive ? live : cachedFloorEth
       const volEth = parseFloat(s.last24HVolume) || 0
       const supply = Number(s.totalSupply) || 0
-      const holders = Number(s.holders) || 0
+      // MEO's live holder count is frozen at its ~2021 value; use the on-chain
+      // reconstruction for it (same rule as the holders-over-time chart).
+      const onchain = onchainHolders?.[label]
+      const holders =
+        STALE_LIVE_HOLDERS.has(label) && onchain != null ? onchain : Number(s.holders) || 0
       const marketCapEth = floorEth * supply
       // turnover is a ratio (vol/market cap) — identical in either currency.
       const turnoverPct = marketCapEth ? (volEth / marketCapEth) * 100 : null
@@ -131,7 +165,7 @@ export default function CollectibleCollections({ tokensStats, ethUsd }) {
         turnoverPct,
       }
     })
-  }, [tokensStats, ethUsd, liveFloors])
+  }, [tokensStats, ethUsd, liveFloors, onchainHolders])
 
   const hasData = rows.some((r) => r.marketCapEth > 0)
 
