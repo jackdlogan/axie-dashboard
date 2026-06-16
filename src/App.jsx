@@ -76,7 +76,7 @@ export default function App() {
     <div className="app">
       <header className="app-header">
         <div>
-          <h1>Axie Marketplace Activity</h1>
+          <h1>Axie Pulse</h1>
           <p className="subtitle">
             Purchase &amp; sale summary · app.axieinfinity.com
           </p>
