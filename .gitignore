@@ -10,3 +10,8 @@ data/
 
 # Generated Dune spellbook seed (recreate with scripts/export-collection-map.mjs)
 dune/seeds/*.csv
+
+# local backups of saved Dune query SQL (before edits)
+.dune-query-backups/
+# generated report (regenerate from the .md)
+VERIFICATION-REPORT.pdf
