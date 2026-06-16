@@ -112,6 +112,12 @@ async function main() {
     if (!prices.length) {
       console.warn('⚠️  Dune collectible-prices query returned 0 rows — keeping existing data.')
     } else {
+      // Full-replace, not upsert: the query returns the whole 180d window each run,
+      // and a (day, collection) pair can DISAPPEAR between runs (e.g. a thin day
+      // whose only sale was re-attributed to another collection). A plain upsert
+      // would never overwrite that now-absent row, leaving a stale orphan. Clear
+      // first so the table exactly mirrors the latest query result.
+      await db.run('DELETE FROM dune_collectible_daily')
       const insPrice = await db.prepare(
         `INSERT INTO dune_collectible_daily (day, collection, sales, median_usd, median_weth)
          VALUES (?,?,?,?,?)
@@ -136,6 +142,9 @@ async function main() {
     if (!holders.length) {
       console.warn('⚠️  Dune collectible-holders query returned 0 rows — keeping existing data.')
     } else {
+      // Full-replace for the same reason as prices (see above): the query returns
+      // the full history each run, so mirror it exactly rather than upserting.
+      await db.run('DELETE FROM dune_collectible_holders_daily')
       const insHolders = await db.prepare(
         `INSERT INTO dune_collectible_holders_daily (day, collection, holders)
          VALUES (?,?,?)

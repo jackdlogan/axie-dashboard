@@ -22,8 +22,15 @@ node scripts/export-collection-map.mjs    # needs SKYMAVIS_API_KEY in .env
 ```
 
 Enumerates every collectible token from the Sky Mavis `axies` search (cap-aware
-partitioning by class/breedCount), resolves overlaps by priority, and writes
-`seeds/axie_collectible_collections_seed.csv`. Takes a few minutes.
+partitioning by class/breedCount) and writes `seeds/axie_collectible_collections_seed.csv`.
+**Multi-membership**: a token gets one row per collection it belongs to (an Axie
+can be in two, e.g. Christmas + Nightmare). This matches how Sky Mavis counts each
+collection independently for **holders** — a single-collection-per-token seed makes
+every overlapping collection's holder count run low (e.g. Origin was ~20% short
+because its Mystic founders were filed under Mystic). Takes a few minutes.
+The **price** query (§3) deliberately re-collapses this to one most-notable
+collection per token so a sale isn't double-counted into two medians — the seed
+stays multi-membership; only the price join de-dups.
 
 ## 2. Publish the mapping to Dune
 
@@ -46,6 +53,17 @@ itself moves against the dollar. Dividing `price_usd` by the ETH rate (rather
 than only taking WETH-settled trades) keeps the multi-currency sales (USDC, WRON,
 AXS) in the median too.
 
+**Single-attribution (unlike holders).** The seed is multi-membership, which is
+correct for *holders* (Sky Mavis counts each collection independently). But a
+**sale** must count once: every Mystic token is also an Origin token, so joining
+the multi-membership seed directly double-counts each Mystic sale into Origin and
+the two median series collapse onto each other. The `primary_collection` CTE below
+attributes each token to its **most notable** collection using the same priority
+as `scripts/lib/collectible.mjs` `collectibleLabel()`
+(Mystic > Origin > MEO > Shiny > Nightmare > Summer > Japanese > Christmas), so the
+price chart matches how top sales are already labelled. The holders query (§4)
+keeps the multi-membership join.
+
 > Source note: Axie sales settle through the Mavis Marketplace `OrderMatched`
 > event, which Dune's `nft.trades` spell does **not** fully index (only ~962 of
 > ~352k/90d show up). So we decode the raw event from `ronin.logs` — the same
@@ -55,6 +73,32 @@ AXS) in the median too.
 > (or `axie.collectible_collections` once the Spellbook PR merges).
 
 ```sql
+WITH primary_collection AS (
+    -- One collection per token (its most notable), so each SALE counts once.
+    -- Priority mirrors scripts/lib/collectible.mjs collectibleLabel().
+    SELECT token_id, collection
+    FROM (
+        SELECT
+            cast(token_id AS varchar) AS token_id,
+            collection,
+            row_number() OVER (
+                PARTITION BY cast(token_id AS varchar)
+                ORDER BY CASE collection
+                    WHEN 'Mystic'    THEN 1
+                    WHEN 'Origin'    THEN 2
+                    WHEN 'MEO'       THEN 3
+                    WHEN 'Shiny'     THEN 4
+                    WHEN 'Nightmare' THEN 5
+                    WHEN 'Summer'    THEN 6
+                    WHEN 'Japanese'  THEN 7
+                    WHEN 'Christmas' THEN 8
+                    ELSE 9
+                END
+            ) AS rn
+        FROM dune.<your_username>.axie_collectible_collections
+    )
+    WHERE rn = 1
+)
 SELECT
     "day",
     collection,
@@ -84,8 +128,8 @@ FROM (
       AND bytearray_substring(l.data, 781, 20) = 0x32950db2a7164ae833121501c797d79e7b79d74c
       AND l.block_time >= CURRENT_DATE - INTERVAL '180' day
   ) t
-JOIN dune.<your_username>.axie_collectible_collections c
-  ON cast(t.token_id AS varchar) = cast(c.token_id AS varchar)
+JOIN primary_collection c
+  ON cast(t.token_id AS varchar) = c.token_id
 GROUP BY 1, 2
 ORDER BY 1, 2
 ```

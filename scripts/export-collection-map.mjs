@@ -1,5 +1,5 @@
 #!/usr/bin/env node
-// Builds the token_id -> collectible-collection seed for the Dune spellbook.
+// Builds the (token_id, collection) seed for the Dune spellbook.
 //
 // Why a seed (and not on-chain SQL): a collection like Mystic / Nightmare is
 // defined by an Axie's genes/parts, which aren't available in decoded form on
@@ -10,12 +10,20 @@
 // The search caps reachable offset at 10,000, so collections larger than that
 // (Summer ~53k, Nightmare ~34k, Japanese ~17k) are partitioned by class — and,
 // if a class slice is still over the cap, by breedCount — so every token is
-// reachable. Overlaps (e.g. an Origin with mystic parts, or NightmareShiny) are
-// resolved by COLLECTIONS priority order (Mystic > Origin > MEO > Shiny >
-// Nightmare > Summer > Japanese > Christmas), matching scripts/lib/collectible.mjs.
+// reachable.
+//
+// MULTI-MEMBERSHIP: a token is emitted once per collection it belongs to (no
+// priority dedup). Many Axies are in two collections (e.g. a Christmas+Nightmare,
+// or an Origin with mystic parts), and Sky Mavis counts each collection
+// independently — so attributing a token to a single "primary" collection makes
+// every overlapping collection's holder/median run low vs app.axie. One row per
+// (token, collection) makes the Dune holders + price queries (which GROUP BY
+// collection) match Sky Mavis. The single "most notable" label used for top-sale
+// display lives in scripts/lib/collectible.mjs (off the Axie's own fields), not
+// this seed, so it is unaffected.
 //
 // Usage: node scripts/export-collection-map.mjs
-// Output: dune/seeds/axie_collectible_collections_seed.csv
+// Output: dune/seeds/axie_collectible_collections_seed.csv (one row per membership)
 
 import { writeFileSync, mkdirSync } from 'node:fs'
 import { resolve, dirname } from 'node:path'
@@ -28,9 +36,8 @@ const PAGE = 100
 const OFFSET_CAP = 10000 // the API stops returning rows past this offset
 const CLASSES = ['Beast', 'Aquatic', 'Plant', 'Bug', 'Bird', 'Reptile', 'Mech', 'Dawn', 'Dusk']
 
-// Highest priority first — a token is assigned to the first collection it
-// matches. Shiny sits above the part-based collections so that a NightmareShiny
-// / SummerShiny counts as Shiny (its rarer, more notable designation).
+// Every collection + its search criteria. Order is irrelevant now (multi-
+// membership: a token is recorded for each collection it matches, not just one).
 const COLLECTIONS = [
   ['Mystic', { numMystic: [1, 2, 3, 4, 5, 6] }],
   ['Origin', { title: ['Origin'] }],
@@ -89,25 +96,32 @@ async function enumerate(criteria, depth = 0) {
 }
 
 async function main() {
-  const assigned = new Map() // token_id -> collection (first match wins = priority)
+  const rows = [] // [token_id, collection] — one per membership (multi-membership)
+  const memberships = new Map() // token_id -> count, for stats only
   for (const [name, criteria] of COLLECTIONS) {
+    const { total } = await page(criteria, 0, 1) // API's own count, for a completeness guard
     const ids = await enumerate(criteria)
-    let added = 0
-    for (const id of ids) {
-      const key = String(id)
-      if (!assigned.has(key)) {
-        assigned.set(key, name)
-        added++
-      }
+    const uniq = [...new Set(ids.map(String))] // partitions are disjoint, but be safe
+    // Guard against a future enumeration regression (cap/partition shortfall).
+    if (total && uniq.length < total * 0.98) {
+      console.warn(`⚠️  ${name}: enumerated ${uniq.length} but API reports ${total} — possible shortfall`)
     }
-    console.log(`  ${name.padEnd(10)} fetched ${ids.length} ids, ${added} newly assigned`)
+    for (const id of uniq) {
+      rows.push([id, name])
+      memberships.set(id, (memberships.get(id) || 0) + 1)
+    }
+    console.log(`  ${name.padEnd(10)} ${String(uniq.length).padStart(6)} members  (API total ${total})`)
   }
 
   const lines = ['token_id,collection']
-  for (const [token_id, collection] of assigned) lines.push(`${token_id},${collection}`)
+  for (const [token_id, collection] of rows) lines.push(`${token_id},${collection}`)
   mkdirSync(dirname(OUT), { recursive: true })
   writeFileSync(OUT, lines.join('\n') + '\n')
-  console.log(`✅ wrote ${assigned.size} token→collection rows to ${OUT}`)
+  const multi = [...memberships.values()].filter((n) => n > 1).length
+  console.log(
+    `✅ wrote ${rows.length} (token,collection) rows · ${memberships.size} distinct tokens · ` +
+      `${multi} in >1 collection → ${OUT}`
+  )
 }
 
 main().catch((e) => {
