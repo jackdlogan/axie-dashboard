@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-06-16T04:30:12.082Z",
+  "generatedAt": "2026-06-16T08:32:52.402Z",
   "metric": "holders",
   "collections": [
     "Christmas",
@@ -18898,14 +18898,14 @@
     },
     {
       "day": "2026-06-16",
-      "Christmas": 1095,
-      "Japanese": 7046,
-      "MEO": 1582,
+      "Christmas": 1092,
+      "Japanese": 7048,
+      "MEO": 1580,
       "Mystic": 451,
-      "Nightmare": 5708,
-      "Origin": 1128,
-      "Shiny": 855,
-      "Summer": 11226
+      "Nightmare": 5704,
+      "Origin": 1127,
+      "Shiny": 853,
+      "Summer": 11225
     }
   ]
 }

@@ -59,6 +59,12 @@ async function main() {
   // zero rows are harmless, but skip the work and warn so it's visible.
   if (!daily.length) {
     console.warn('⚠️  Dune daily query returned 0 rows — keeping existing data, skipping daily upsert.')
+  } else {
+    // Full-replace: the query returns the whole window each run, so a day that
+    // falls out of the window (e.g. after trimming 730→365 days) must be removed,
+    // not left as a stale orphan. Guarded by daily.length so a transient empty
+    // response never wipes good data.
+    await db.run('DELETE FROM dune_daily')
   }
   const insDaily = await db.prepare(
     `INSERT INTO dune_daily (day, axie_sales, unique_buyers, volume_usd, median_usd, p25_usd, p75_usd, p95_usd)

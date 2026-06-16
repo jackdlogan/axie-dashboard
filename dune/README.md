@@ -126,7 +126,7 @@ FROM (
     WHERE l.contract_address = 0x3B3aDf1422f84254B7fbb0e7cA62Bd0865133fe3
       AND l.topic0 = 0x109cee1a21fd2e7fba88adb0c288672b657beb8b4f5e36ea950cbebf8a901b6d
       AND bytearray_substring(l.data, 781, 20) = 0x32950db2a7164ae833121501c797d79e7b79d74c
-      AND l.block_time >= CURRENT_DATE - INTERVAL '180' day
+      AND l.block_time >= CURRENT_DATE - INTERVAL '365' day
   ) t
 JOIN primary_collection c
   ON cast(t.token_id AS varchar) = c.token_id
